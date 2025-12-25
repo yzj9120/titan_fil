@@ -1,0 +1,22 @@
+EditionID	                 对应 Windows 版本	        Edition Type
+Core	                     Windows 10/11 家庭版	       Home
+CoreCountrySpecific          Windows 10/11 家庭中文版	       Home
+CoreSingleLanguage	         Windows 10/11 家庭单语言版	   Home
+Professional	             Windows 10/11 专业版	     Professional
+Enterprise	                 Windows 10/11 企业版	     Enterprise
+Education	                 Windows 10/11 教育版	     Education
+ServerStandard	             Windows Server 标准版	      Server
+IoTEnterprise	            Windows 10/11 IoT 企业版	     IoTEnterprise
+
+
+
+run:自动（完全静默安装）
+run2:自动(不可用)
+run3:提示用户(不可用)
+run4:提示用户 带模版选择 （可用）
+run5:手动（可用）
+
+run6:手动（未测）
+
+
+

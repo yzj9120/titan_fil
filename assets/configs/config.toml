@@ -1,0 +1,59 @@
+[BuildConfig]
+Env = "release"
+
+[Network]
+ListenAddress = "/ip4/127.0.0.1/tcp/1234/http"
+
+# 对内测试地址
+#WebServerURL = "https://storage-test-api.titannet.io"
+#LocatorURL = "https://test.titannet.io:5000/rpc/v0"
+#NodeInfoURL = "http://120.79.221.36:10091"
+#StorageURL = "https://storage-test-api.titannet.io"
+#WebServerURLT4 = "https://test4-dev.titannet.io"
+#AgentServerURLT4 = "https://www-test-api.titannet.io"
+#NodeInfoURLT4 = "https://test4-dev.titannet.io"
+#BindServerURLV4 = "https://www-test4.titannet.io"
+
+#对外测试
+WebServerURL = "https://api-test1.container1.titannet.io"
+LocatorURL = "https://cassini-locator.titannet.io:5000/rpc/v0"
+NodeInfoURL = "https://test1.titannet.io"
+StorageURL = "https://storage.titannet.io"
+WebServerURLT4 = "https://test4.titannet.io"
+AgentServerURLT4 = "https://test4-api.titannet.io"
+NodeInfoURLT4 = "https://test4-network.titannet.io"
+BindServerURLV4 = "https://test4.titannet.io"
+
+[Bandwidth]
+BandwidthMB = 10
+Min = 10
+Max = 200
+Step = 10
+BandwidthUp = 0
+BandwidthDown = 0
+
+[Storage]
+StorageGB = 2
+Min = 2
+Max = 2048
+Step = 2
+Path = "./storage"
+
+[Memory]
+MemoryGB = 1
+Min = 1
+Max = 32
+Step = 1
+
+[CPU]
+Cores = 1
+Min = 1
+Max = 16
+Step = 1
+
+[Basic]
+Token = ""
+
+[Netflow]
+NetflowUp = 0
+NetflowDown = 0
