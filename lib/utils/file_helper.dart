@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:archive/archive.dart';
@@ -10,6 +11,7 @@ import 'package:titan_fil/utils/preferences_helper.dart';
 import '../config/app_config.dart';
 import '../constants/constants.dart';
 import '../plugins/native_app.dart';
+import 'LoggerUtil.dart';
 
 /// 文件路径工具类
 class FileHelper {
@@ -60,7 +62,7 @@ class FileHelper {
         throw Exception('目录不存在: $titan_work_agent_path');
       }
     }
-    debugPrint("老的安装agent工作相关目录:" + titan_work_agent_path);
+
     return titan_work_agent_path;
   }
 
@@ -128,7 +130,7 @@ class FileHelper {
     final parentPath = await getParentPath();
     final currentPath = await getCurrentPath();
     final String workingDir = await getWorkAgentPath();
-    return {
+    final Map<String, String> paths = {
       "AppSupport_TitanL2": appL2,
       "AppSupport_TitanL4": appL4,
       "Install_TitanL2": installL2,
@@ -137,7 +139,11 @@ class FileHelper {
       "parentPath": parentPath,
       "currentPath": currentPath,
       "workingDir": workingDir,
-    }.toString();
+    };
+
+    LoggerUtil.paths(paths, title: 'Titan Directories');
+
+    return jsonEncode(paths);
   }
 
   /// 确保目录存在（不存在则创建）
@@ -389,9 +395,10 @@ class FileHelper {
     }
   }
 
-
   // 定义一个常量 Key，用于存储迁移状态
-  static const String _kMigrationCompleteKey = "key_agent_migration_completed_v1";
+  static const String _kMigrationCompleteKey =
+      "key_agent_migration_completed_v1";
+
   /// 逻辑流程：
   /// 1. 确定【新版本】的固定存储位置 (Target)。
   /// 2. 尝试寻找【老版本】的旧数据位置 (Source)。
@@ -426,13 +433,15 @@ class FileHelper {
     }
     // 拿到路径对象
     final Directory targetDir = Directory(targetDirPath);
-    debugPrint("工作地址："+ targetDirPath);
+    debugPrint("工作地址：" + targetDirPath);
     // 开始核心业务逻辑
     try {
-      bool hasMigrated = await PreferencesHelper.getBool(_kMigrationCompleteKey) ?? false;
+      bool hasMigrated =
+          await PreferencesHelper.getBool(_kMigrationCompleteKey) ?? false;
       // 如果标记显示“已完成”，并且目标目录确实存在
       if (hasMigrated && await targetDir.exists()) {
-        logBuffer?.writeln('✅ Migration already completed previously. Skipping.');
+        logBuffer
+            ?.writeln('✅ Migration already completed previously. Skipping.');
         return true; // 直接返回，不再执行后续耗时操作
       }
       // [Step 2] 寻找源目录 (Source Directory)
@@ -559,5 +568,4 @@ class FileHelper {
       return false;
     }
   }
-
 }

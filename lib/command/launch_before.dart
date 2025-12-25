@@ -13,6 +13,7 @@ import '../l10n/translation.dart';
 import '../services/global_service.dart';
 import '../services/log_service.dart';
 import '../utils/FileLogger.dart';
+import '../utils/LoggerUtil.dart';
 import '../utils/file_helper.dart';
 import '../utils/preferences_helper.dart';
 import 'dart:async';
@@ -25,7 +26,7 @@ class LaunchBeforeCommand {
   static Future<void> setUp() async {
     logBuffer.clear();
     final stopwatch = Stopwatch()..start();
-
+    LoggerUtil.init(logLevel: LoggerUtil.DEBUG);
     // 初始化 SharedPreferences (包含特殊的重试逻辑)
     await _safeRun(() async {
       try {

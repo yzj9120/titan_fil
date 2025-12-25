@@ -23,12 +23,8 @@
 /* Begin PBXBuildFile section */
 		010ACF4E2E21079600589439 /* limit_multipass_vm.sh in Resources */ = {isa = PBXBuildFile; fileRef = 010ACF4D2E21079600589439 /* limit_multipass_vm.sh */; };
 		013AF5C22DF7DD0E009BBCFD /* check_proxy_ip.sh in Resources */ = {isa = PBXBuildFile; fileRef = 013AF5C12DF7DD0E009BBCFD /* check_proxy_ip.sh */; };
-		01634AA42C1299F3005DB351 /* gol2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 01634AA22C1299F3005DB351 /* gol2.dylib */; };
-		01634AA52C1299F3005DB351 /* libgoworkerd.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 01634AA32C1299F3005DB351 /* libgoworkerd.dylib */; };
 		01634AA62C129D02005DB351 /* libgoworkerd.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 01634AA32C1299F3005DB351 /* libgoworkerd.dylib */; };
 		01634AA72C129D08005DB351 /* gol2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = 01634AA22C1299F3005DB351 /* gol2.dylib */; };
-		01634AA82C129D14005DB351 /* gol2.dylib in Bundle Framework */ = {isa = PBXBuildFile; fileRef = 01634AA22C1299F3005DB351 /* gol2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		01634AA92C129D1B005DB351 /* libgoworkerd.dylib in Bundle Framework */ = {isa = PBXBuildFile; fileRef = 01634AA32C1299F3005DB351 /* libgoworkerd.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		019A60AF2DE6FBA7004DB56C /* system_info.sh in Resources */ = {isa = PBXBuildFile; fileRef = 019A60AE2DE6FBA7004DB56C /* system_info.sh */; };
 		01A0DF8B2DD594C500C9C2AC /* multipass-1.15.1.pkg in Resources */ = {isa = PBXBuildFile; fileRef = 01A0DF8A2DD594C500C9C2AC /* multipass-1.15.1.pkg */; };
 		01A0DF8D2DD5BDC000C9C2AC /* MultipassInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A0DF8C2DD5BDC000C9C2AC /* MultipassInstaller.swift */; };
@@ -58,21 +54,6 @@
 			remoteInfo = FLX;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		33CC110E2044A8840003C045 /* Bundle Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				01634AA92C129D1B005DB351 /* libgoworkerd.dylib in Bundle Framework */,
-				01634AA82C129D14005DB351 /* gol2.dylib in Bundle Framework */,
-			);
-			name = "Bundle Framework";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		010ACF4D2E21079600589439 /* limit_multipass_vm.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = limit_multipass_vm.sh; path = Runner/Resources/limit_multipass_vm.sh; sourceTree = "<group>"; };
@@ -120,8 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01634AA42C1299F3005DB351 /* gol2.dylib in Frameworks */,
-				01634AA52C1299F3005DB351 /* libgoworkerd.dylib in Frameworks */,
 				CD8CF4011AEC3B3313E11BBD /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,7 +247,6 @@
 				33CC10E92044A3C60003C045 /* Sources */,
 				33CC10EA2044A3C60003C045 /* Frameworks */,
 				33CC10EB2044A3C60003C045 /* Resources */,
-				33CC110E2044A8840003C045 /* Bundle Framework */,
 				3399D490228B24CF009A79C7 /* ShellScript */,
 				679B1F9749F2033350832E78 /* [CP] Embed Pods Frameworks */,
 			);
