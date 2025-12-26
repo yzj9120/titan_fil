@@ -318,7 +318,6 @@ class HttpClientUtils {
         _log("unzipFile error($exitCode): $err", w: true);
         return false;
       }
-
     } catch (e) {
       _log("unzipFile catch: $e");
       return false;
@@ -411,12 +410,7 @@ class HttpClientUtils {
       ..writeln("API: ${requestOptions.uri.toString()}")
       ..writeln("Details: ${_sanitizeData(error.response?.data)}");
     final requestUrl = requestOptions.uri.toString();
-    final baseUrl = ApiEndpoints.webServerURLV3;
-    if (requestUrl.startsWith(baseUrl)) {
-      _log(logs, w: true);
-    } else {
-      _log(logs, w: true);
-    }
+    _log(logs, w: true);
   }
 
   // 数据清理方法，避免直接输出可能敏感或无法序列化的数据

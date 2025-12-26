@@ -28,9 +28,10 @@ class UnderlinedText extends StatelessWidget {
         Text(
           text,
           textAlign: textAlign,
-          style: textStyle ?? AppTextStyles.textStyle10white.copyWith(
-            color: AppColors.themeColor,
-          ),
+          style: textStyle ??
+              AppTextStyles.textStyle10white.copyWith(
+                color: AppColors.themeColor,
+              ),
         ),
         Positioned(
           bottom: 0,

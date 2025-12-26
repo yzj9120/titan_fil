@@ -52,7 +52,6 @@ class TextWidgetState extends State<TextWidget> {
         letterSpacing: widget.letterSpace,
         wordSpacing: widget.wordSpace,
         height: widget.height,
-
       ),
     );
   }

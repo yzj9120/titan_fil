@@ -173,11 +173,11 @@ class BatShRunner {
         scriptName = 'check_proxy_ip.sh';
         final executableDir = File(Platform.resolvedExecutable).parent.path;
         final resourceDir =
-        Directory('$executableDir/../Resources').resolveSymbolicLinksSync();
+            Directory('$executableDir/../Resources').resolveSymbolicLinksSync();
         final scriptPath = '$resourceDir/$scriptName';
         cmdArgs = [scriptPath];
         result =
-        await Process.run('/bin/bash', cmdArgs).timeout(timeoutDuration);
+            await Process.run('/bin/bash', cmdArgs).timeout(timeoutDuration);
         logBuffer.writeln('result;$result');
       } else if (Platform.isWindows) {
         scriptName = 'check_proxy_ip.bat';
@@ -186,7 +186,7 @@ class BatShRunner {
         // 构建参数列表
         List<String> arguments = ['/c', scriptPath];
         result =
-        await Process.run('cmd.exe', arguments).timeout(timeoutDuration);
+            await Process.run('cmd.exe', arguments).timeout(timeoutDuration);
         logBuffer.writeln('result;$result');
       } else {
         return null;
@@ -246,7 +246,7 @@ class BatShRunner {
           return result; // 成功就直接返回
         }
 
-  // 2. 如果 set 失败，尝试创建 Limit 分组
+        // 2. 如果 set 失败，尝试创建 Limit 分组
         final res = await runCommand([
           'bandwidthctl',
           vbName.trim(),
@@ -334,10 +334,10 @@ class BatShRunner {
     final vboxmanagePath = findVBoxManagePath();
     // final libsPath = await FileHelper.getParentPath();
     final workingDir = await FileHelper.getWorkAgentPath();
-    final extractToPath =path.join(workingDir, "PSTools");
+    final extractToPath = path.join(workingDir, "PSTools");
     final psexecPath = path.join(extractToPath, "psexec.exe");
     final workingDirectory = r'C:\Windows\System32';
-    debugPrint("huangzhen:psexecPath="+psexecPath );
+    debugPrint("huangzhen:psexecPath=" + psexecPath);
     final args = [
       '-accepteula',
       '-s',
@@ -411,5 +411,4 @@ class BatShRunner {
     // 如果没找到，返回命令名，依赖 PATH 环境变量
     return 'VBoxManage';
   }
-
 }

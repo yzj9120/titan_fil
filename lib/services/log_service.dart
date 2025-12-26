@@ -658,6 +658,7 @@ class LogService {
       return;
     }
     final logsDirPath = await FileHelper.getLogsPath();
+
     /// 定义日志类型前缀
     // List<String> logTypes = ['agent-', 'server-', 'edge-', 'storage-'];
     final logTypes = LoggerType.values.map((type) => type.name).toList();
@@ -709,7 +710,8 @@ class LogService {
       // 2. "server_-2025-05-26" → 提取 "2025-05-26"
       final dateMatch = RegExp(r'(\d{4}-\d{2}-\d{2})').firstMatch(fileName);
       if (dateMatch == null) {
-        throw FormatException('Unable to extract date from file name: $fileName');
+        throw FormatException(
+            'Unable to extract date from file name: $fileName');
       }
       return DateTime.parse(dateMatch.group(1)!);
     }

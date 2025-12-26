@@ -10,7 +10,6 @@ class MyLineChart extends StatelessWidget {
   final logic = Get.find<HomeController>();
   final agentController = Get.find<AgentController>();
 
-
   @override
   Widget build(BuildContext context) {
     return Obx(() {
@@ -61,7 +60,7 @@ class MyLineChart extends StatelessWidget {
       getTouchedSpotIndicator:
           (LineChartBarData barData, List<int> touchedIndexes) {
         return touchedIndexes.map((index) {
-          final color =  AppColors.tcDB1;
+          final color = AppColors.tcDB1;
           return TouchedSpotIndicatorData(
             FlLine(color: color, strokeWidth: 0.5),
             FlDotData(
@@ -80,7 +79,7 @@ class MyLineChart extends StatelessWidget {
         getTooltipItems: (List<LineBarSpot> touchedSpots) {
           return touchedSpots.map((spot) {
             return LineTooltipItem(
-              'FIL: ${spot.y.toStringAsFixed(4)}',  // 直接显示y值
+              'FIL: ${spot.y.toStringAsFixed(4)}', // 直接显示y值
               TextStyle(
                 color: AppColors.cff0084,
                 fontSize: 12,
@@ -117,7 +116,6 @@ class MyLineChart extends StatelessWidget {
         reservedSize: 40,
       );
 
-
   /// 右侧Y轴标题（显示最大值的4等分）
   double getInterval() {
     final primaryMaxY = _calculatePrimaryMaxY();
@@ -150,7 +148,7 @@ class MyLineChart extends StatelessWidget {
             maxIncome * 0.75,
             maxIncome
           ];
-         // debugPrint("Actual Target Points: $targetPoints");
+          // debugPrint("Actual Target Points: $targetPoints");
           // 找到最接近的目标点
           final closestPoint = targetPoints.reduce((a, b) =>
               (secondaryValue - a).abs() < (secondaryValue - b).abs() ? a : b);
@@ -191,59 +189,62 @@ class MyLineChart extends StatelessWidget {
 
   /// X轴标题
   SideTitles get bottomTitles => SideTitles(
-    showTitles: true,
-    reservedSize: 32,
-    interval: 1,
-    getTitlesWidget: (value, meta) {
-      const style = TextStyle(
-        color: AppColors.tcCff,
-        fontSize: 10,
-      );
+        showTitles: true,
+        reservedSize: 32,
+        interval: 1,
+        getTitlesWidget: (value, meta) {
+          const style = TextStyle(
+            color: AppColors.tcCff,
+            fontSize: 10,
+          );
 
-      final index = value.toInt();
+          final index = value.toInt();
 
-      // 如果有数据，用数据的时间戳
-      if (index >= 0 && index < agentController.nodeIncomeList.length) {
-        final incomeData = agentController.nodeIncomeList[index];
-        final timestamp = incomeData.createdAt;
+          // 如果有数据，用数据的时间戳
+          if (index >= 0 && index < agentController.nodeIncomeList.length) {
+            final incomeData = agentController.nodeIncomeList[index];
+            final timestamp = incomeData.createdAt;
 
-        // 直接转换时间戳为日期
-        try {
-          final date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-          final dateText = '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+            // 直接转换时间戳为日期
+            try {
+              final date =
+                  DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+              final dateText =
+                  '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+              return SideTitleWidget(
+                space: 10,
+                axisSide: meta.axisSide,
+                child: Text(dateText, style: style),
+              );
+            } catch (e) {
+              // 转换失败，显示索引
+              return SideTitleWidget(
+                space: 10,
+                axisSide: meta.axisSide,
+                child: Text('${index + 1}', style: style),
+              );
+            }
+          }
+
+          // 没有数据时，显示默认的连续日期
+          final now = DateTime.now();
+          // 假设显示最近14天
+          final date = now.subtract(Duration(days: 13 - index));
+          final dateText =
+              '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+
           return SideTitleWidget(
             space: 10,
             axisSide: meta.axisSide,
             child: Text(dateText, style: style),
           );
-        } catch (e) {
-          // 转换失败，显示索引
-          return SideTitleWidget(
-            space: 10,
-            axisSide: meta.axisSide,
-            child: Text('${index + 1}', style: style),
-          );
-        }
-      }
-
-      // 没有数据时，显示默认的连续日期
-      final now = DateTime.now();
-      // 假设显示最近14天
-      final date = now.subtract(Duration(days: 13 - index));
-      final dateText = '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
-
-      return SideTitleWidget(
-        space: 10,
-        axisSide: meta.axisSide,
-        child: Text(dateText, style: style),
+        },
       );
-    },
-  );
+
   /// 顶部标题（图例）
   SideTitles topTitles() => SideTitles(
         showTitles: true,
         getTitlesWidget: (value, meta) {
-
           if (value == meta.min) {
             return SizedBox();
           } else if (value == meta.max) {
@@ -287,7 +288,6 @@ class MyLineChart extends StatelessWidget {
   List<LineChartBarData> get lineBarsData1 => [
         lineChartBarData2_2, // 参考数据集
       ];
-
 
   /// 参考数据集（固定0-4范围）
   LineChartBarData get lineChartBarData2_2 => LineChartBarData(

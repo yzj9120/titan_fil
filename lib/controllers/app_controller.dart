@@ -45,7 +45,6 @@ class AppController extends GetxController {
   /// 版本更新数据
   AppUpdateData? updateData;
 
-
   /// 模拟接口返回数据，后期可替换真实接口
   final Map<String, dynamic> _mockJson = {
     "code": 0,
@@ -89,7 +88,7 @@ class AppController extends GetxController {
   /// 仅检查版本更新，不涉及弹窗
   /// 返回 true 表示检查完成
   Future<bool> checkVersion() async {
-     final res = await ApiService.checkVersion();
+    final res = await ApiService.checkVersion();
     // 解析模拟数据（可替换为实际接口）
     // final dataJson = _mockJson['data'] as Map<String, dynamic>;
     // final dataJson = await PreferencesHelper.getMap("mockJson");
@@ -102,7 +101,7 @@ class AppController extends GetxController {
     updateData = res;
 
     remoteVersion.value = res.version;
-     // 比较版本
+    // 比较版本
     final compareResult =
         _compareVersions(localVersion.value, remoteVersion.value);
 
@@ -221,6 +220,7 @@ class AppController extends GetxController {
       return int.tryParse(part) ?? 0;
     }).toList();
   }
+
   /// 弹出更新对话框，避免重复弹出
   Future<void> _showUpdateDialog() async {
     _canShowDialog = false;

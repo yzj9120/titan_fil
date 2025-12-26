@@ -90,9 +90,7 @@ extension _SetPcdnPageCards on PageTitleView {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildStorageMigrationLimitRow(log.state),
-
               const Spacer(),
-
               _buildSaveButton(
                   ctx,
                   logic.state.hoverIndex.value == 2
@@ -103,14 +101,11 @@ extension _SetPcdnPageCards on PageTitleView {
                       : AppColors.themeColor,
                   logic.state.hoverIndex.value == 2
                       ? AppTextStyles.textStyle10black
-                      .copyWith(fontWeight: FontWeight.bold)
+                          .copyWith(fontWeight: FontWeight.bold)
                       : AppTextStyles.textStyle10black.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.themeColor), () {
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.themeColor), () {
                 log.onFeedbackView(ctx);
-
-
-
               }),
             ],
           ),
@@ -145,10 +140,10 @@ extension _SetPcdnPageCards on PageTitleView {
                       : AppColors.themeColor,
                   logic.state.hoverIndex.value == 3
                       ? AppTextStyles.textStyle10black
-                      .copyWith(fontWeight: FontWeight.bold)
+                          .copyWith(fontWeight: FontWeight.bold)
                       : AppTextStyles.textStyle10black.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.themeColor), () {
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.themeColor), () {
                 log.onReportView(ctx);
               }),
             ],

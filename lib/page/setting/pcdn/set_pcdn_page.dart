@@ -52,7 +52,7 @@ extension _SetPcdnPageLayout on SetPcdnPage {
           _buildHeader(),
           const SizedBox(height: 10),
           _buildContentSection(context, log),
-          if(Platform.isWindows)...[
+          if (Platform.isWindows) ...[
             const SizedBox(height: 10),
             _buildContentSection2(context, log)
           ],
@@ -261,7 +261,6 @@ extension _SetPcdnPageCards on SetPcdnPage {
                       style: logic.state.hoverIndex.value == 4
                           ? AppTextStyles.textStyle15black
                           : AppTextStyles.textStyle15),
-
                   Text("(Beta)".tr,
                       style: logic.state.hoverIndex.value == 4
                           ? AppTextStyles.textStyle15black

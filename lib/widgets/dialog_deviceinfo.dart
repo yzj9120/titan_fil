@@ -65,10 +65,9 @@ class DialogDeviceInfo {
   }
 
   static Future<void> showDeviceStatusBottomSheet(BuildContext ctx) async {
-
     if (_bottomSheetCompleter != null) return;
     _bottomSheetCompleter = Completer<void>();
-    String agentId="";
+    String agentId = "";
     // 创建一个 Completer 用于等待 agentId 获取成功或超时
     final agentIdCompleter = Completer<String>();
     // 1. 定义轮询参数

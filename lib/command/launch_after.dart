@@ -5,12 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart' as path;
 
-import '../config/app_config.dart';
 import '../constants/constants.dart';
 import '../controllers/agent_controller.dart';
 import '../controllers/miner_controller.dart';
-import '../controllers/notice_controller.dart';
-import '../network/api_service.dart';
 import '../page/setting/setting_controller.dart';
 import '../page/task/pcdn/child/env_controller.dart';
 import '../plugins/agent_plugin.dart';
@@ -39,8 +36,6 @@ class LaunchAfterCommand {
 
     // 1. 同步初始化 (内存操作，不易卡死，保持原样)
     try {
-      Get.lazyPut(
-          () => NoticeController(globalService: Get.find<GlobalService>()));
       Get.lazyPut(() => MinerController());
       Get.lazyPut(() => SettingController());
       Get.lazyPut(
@@ -56,7 +51,6 @@ class LaunchAfterCommand {
       _safeRun(_initNetworkIP, "initNetworkIP"), // 之前是裸跑，现在包起来
       _safeRun(DownLoadVmName.download, "down VmName"),
       _safeRun(DownLoadPSTools.download, "down pstools"),
-      _safeRun(_initGitbookUrl, "initGitbookUrl"), // 之前是裸跑，现在包起来
     ]);
 
     // 3. 核心业务：Agent 检查与下载
@@ -83,11 +77,6 @@ class LaunchAfterCommand {
     await NetworkHelper.clearCachedIP();
     String freshIp = await NetworkHelper.getUserIP(forceRefresh: true);
     logBuffer.writeln("freshIp: $freshIp");
-  }
-
-  static Future<void> _initGitbookUrl() async {
-    final url = await ApiService.gitbook();
-    AppConfig.setEnUrl(url);
   }
 
   static Future<void> _checkAndDownloadAgent() async {

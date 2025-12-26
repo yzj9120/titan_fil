@@ -30,7 +30,6 @@ class DownLoadHot {
   }) async {
     FileLogger.log("DownLoadHot:");
     try {
-
       // 从服务器获取最新版本信息
       var serverVersionUrl =
           "${ApiEndpoints.webServerURLV4}${ApiEndpoints.updates}?platform=windows";
@@ -270,4 +269,3 @@ class DownLoadHot {
     }
   }
 }
-

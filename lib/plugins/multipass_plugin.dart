@@ -433,7 +433,7 @@ class MultiPassPlugin extends BasePlugin {
     // final workingDir = path.join(libsPath, AppConfig.workingDir);
     // final exePath = path.join(workingDir, AppConfig.checkVmNamesProcess);
     // final ppath = path.join(workingDir, "apps");
-    final workingDir =  await FileHelper.getWorkAgentPath();
+    final workingDir = await FileHelper.getWorkAgentPath();
     final ppath = path.join(workingDir, "apps");
     final exePath = await FileHelper.getVmNamesProcessPath();
     final logBuffer = StringBuffer();

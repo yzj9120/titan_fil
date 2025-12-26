@@ -13,5 +13,4 @@ class LogsState {
   final RxList<LogEntry> logs = <LogEntry>[].obs;
   final RxList<DateTime?> selectedDates = <DateTime>[].obs;
   final RxBool isLoading = true.obs;
-
 }

@@ -268,8 +268,6 @@ class NativeApp {
     }
   }
 
-
-
   ///重启程序
   static void restartApplication() async {
     try {
@@ -442,18 +440,28 @@ class NativeApp {
   /// - "timeout"：超时
   /// - 其他字符串：错误信息
   /// 复制文件夹（优先使用系统命令，失败则回退到 Dart 层复制）
-  static Future<String> copyFileNew(String sourcePath, String destinationPath) async {
+  static Future<String> copyFileNew(
+      String sourcePath, String destinationPath) async {
     try {
-       late Process copyFileProcess;
+      late Process copyFileProcess;
       bool success = false;
       int exitCode = -1;
 
       if (Platform.isMacOS) {
         // macOS 使用 cp -R 命令
-        copyFileProcess = await Process.start('cp', ['-R', '$sourcePath/', destinationPath]);
+        copyFileProcess =
+            await Process.start('cp', ['-R', '$sourcePath/', destinationPath]);
       } else if (Platform.isWindows) {
         // Windows 使用 xcopy 命令
-        final args = ['/s', '/e', '/i', '/c', '/y', '$sourcePath\\', destinationPath];
+        final args = [
+          '/s',
+          '/e',
+          '/i',
+          '/c',
+          '/y',
+          '$sourcePath\\',
+          destinationPath
+        ];
         copyFileProcess = await Process.start('xcopy', args, runInShell: true);
       } else {
         throw Exception('Unsupported platform');
@@ -479,10 +487,10 @@ class NativeApp {
         return "ok";
       }
       // ❌ 命令行失败，执行代码级复制回退方案
-      print('⚠️ Native copy failed (exitCode=$exitCode). Falling back to Dart copy...');
+      print(
+          '⚠️ Native copy failed (exitCode=$exitCode). Falling back to Dart copy...');
       bool fallbackSuccess = await _copyWithDart(sourcePath, destinationPath);
       return fallbackSuccess ? "ok" : "fallback_failed";
-
     } catch (e, stackTrace) {
       print('❌ copyFileNew exception: $e\n$stackTrace');
       // 如果命令失败，直接尝试 Dart 级复制
@@ -492,7 +500,8 @@ class NativeApp {
   }
 
   /// Dart 实现的递归文件复制（备用方案）
-  static Future<bool> _copyWithDart(String sourcePath, String destinationPath) async {
+  static Future<bool> _copyWithDart(
+      String sourcePath, String destinationPath) async {
     try {
       final srcDir = Directory(sourcePath);
       final destDir = Directory(destinationPath);
@@ -522,8 +531,6 @@ class NativeApp {
       return false;
     }
   }
-
-
 
   static void _log(String message, {bool warning = false}) {
     if (warning == false) {

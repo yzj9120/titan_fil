@@ -5,7 +5,7 @@ class AppColors {
 
   static const Color canvasColor = Color.fromARGB(255, 249, 249, 249);
   static const Color scaffoldBackgroundColor = Colors.white;
-  static const Color accentCanvasColor =  Color(0xFF111111);
+  static const Color accentCanvasColor = Color(0xFF111111);
 
   static const themeColor = Color(0xFFDBFF00);
   static const themeColor2 = Color(0xFFBDD523);

@@ -62,7 +62,7 @@ class DeviceStatusSection extends StatelessWidget {
       children: [
         _buildDeviceStatusIndicator(logic),
         const Spacer(),
-        _buildNotificationIndicator(ctx, logic),
+        // _buildNotificationIndicator(ctx, logic),
       ],
     );
   }
@@ -74,21 +74,20 @@ class DeviceStatusSection extends StatelessWidget {
       bool agentStatus =
           stats.isAgentRunning.value && stats.isAgentOnline.value;
       return Container(
-        width: 194,
+        width: 335,
         height: 45,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(28),
           color: AppConfig.isDebug ? Colors.red : Colors.transparent,
           border: Border.all(
-            color: AppConfig.isDebug
-                ? Colors.red
-                : _getStatusColor(agentStatus),
+            color:
+                AppConfig.isDebug ? Colors.red : _getStatusColor(agentStatus),
             width: 1.0, // 设置边框宽度
           ),
         ),
         child: Text(
-          _getStatusText( agentStatus),
+          _getStatusText(agentStatus),
           style: TextStyle(
               color: _getStatusTextColor(agentStatus),
               fontSize: 13,
@@ -98,32 +97,7 @@ class DeviceStatusSection extends StatelessWidget {
     });
   }
 
-  /// Shows notification count with alert styling
-  Widget _buildNotificationIndicator(BuildContext ctx, HomeController logic) {
-    return Obx(() {
-      var notificationCount = logic.noticeController.notices.length;
-      return MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: InkWell(
-          onTap: () => logic.onOpenNoticeDialog(ctx),
-          child: Container(
-            width: 45,
-            height: 45,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(28),
-              color: _getNotificationColor(notificationCount, 1),
-              border: Border.all(
-                color: _getNotificationColor(notificationCount, 2),
-                width: 1.0, // 设置边框宽度
-              ),
-            ),
-            child: '\u{1F514}'.toEmojiText(),
-          ),
-        ),
-      );
-    });
-  }
+
 
   /// Large button showing earning progress/status
   Widget _buildEarningProgressButton(
@@ -132,7 +106,7 @@ class DeviceStatusSection extends StatelessWidget {
       final stats = logic.globalService;
       bool agentStatus = stats.isAgentRunning.value;
 
-      final bool isActive =  agentStatus;
+      final bool isActive = agentStatus;
       final bool isChinese = stats.localeController.isChineseLocale();
 
       Widget btn = isChinese
@@ -246,10 +220,10 @@ class DeviceStatusSection extends StatelessWidget {
 
   /// Container showing tasks count (0/2)
   Widget _buildTasksCounterContainer(HomeController logic) {
-    String _getTaskCount( bool agentStatus) {
-      if ( agentStatus) {
+    String _getTaskCount(bool agentStatus) {
+      if (agentStatus) {
         return "1";
-      }  else {
+      } else {
         return "0".tr;
       }
     }
@@ -303,7 +277,6 @@ class DeviceStatusSection extends StatelessWidget {
       ],
     );
   }
-
 
   /// Tile showing PCDN service status
   Widget _buildPCDNServiceTile(BuildContext context, HomeController logic) {
@@ -371,12 +344,12 @@ class DeviceStatusSection extends StatelessWidget {
                         autoShow: shouldShowPcdnTip,
                         showClose: true,
                         // triggerMode: TooltipTriggerMode.manual,
-                        onClose: (){
+                        onClose: () {
                           logic.closeToday();
                         },
                         backgroundColor: AppColors.white,
                         color: AppColors.back1,
-                        child:  MouseRegion(
+                        child: MouseRegion(
                           cursor: SystemMouseCursors.click,
                           child: InkWell(
                             onTap: () {
@@ -386,7 +359,6 @@ class DeviceStatusSection extends StatelessWidget {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ],
@@ -423,27 +395,27 @@ class DeviceStatusSection extends StatelessWidget {
   }
 
   /// Returns color based on device status index
-  Color _getStatusColor( bool agentStatus) {
+  Color _getStatusColor(bool agentStatus) {
     if (agentStatus) {
       return AppColors.themeColor;
-    }  else {
+    } else {
       return AppColors.white;
     }
   }
 
-  Color _getStatusTextColor( bool agentStatus) {
+  Color _getStatusTextColor(bool agentStatus) {
     if (agentStatus) {
       return AppColors.themeColor;
-    }  else {
+    } else {
       return AppColors.white;
     }
   }
 
   /// Returns status text based on device status index
-  String _getStatusText( bool agentStatus) {
+  String _getStatusText(bool agentStatus) {
     if (agentStatus) {
       return "index_device_status_running".tr;
-    }  else {
+    } else {
       return "index_device_status_not_started".tr;
     }
   }
@@ -468,7 +440,6 @@ class DeviceStatusSection extends StatelessWidget {
       return Colors.transparent;
     }
   }
-
 
   /// Returns PCDN icon based on running status
   Image _getPCDNIcon(bool isRunning) {

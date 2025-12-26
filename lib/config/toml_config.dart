@@ -11,6 +11,7 @@ class TomlConfig {
   static late Map<String, dynamic> _tomlConfig;
   static final _logger = LoggerFactory.createLogger(LoggerName.t3);
   static final logBuffer = StringBuffer();
+
   /// 加载配置文件
   static Future<void> load() async {
     try {
@@ -121,7 +122,8 @@ class TomlConfig {
           logBuffer.writeln("LocatorURL unchanged, no update required.");
           return content;
         } else {
-          logBuffer.writeln("LocatorURL changed: $currentValue → $newLocatorUrl");
+          logBuffer
+              .writeln("LocatorURL changed: $currentValue → $newLocatorUrl");
           return content.replaceFirst(
             regex,
             '  LocatorURL = "$newLocatorUrl"',

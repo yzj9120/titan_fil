@@ -143,7 +143,7 @@ class PCDNController extends GetxController {
     final EnvController logic = Get.find<EnvController>();
 
     final dirstatus = await logic.ensureWorkDir(pContext);
-    if(!dirstatus){
+    if (!dirstatus) {
       return;
     }
 

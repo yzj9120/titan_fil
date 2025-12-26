@@ -64,17 +64,16 @@ class _CustomTooltipState extends State<CustomTooltip> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.autoShow  ) {
+      if (widget.autoShow) {
         Future.delayed(widget.autoHideDuration, () {
           if (mounted) _tooltipController.showTooltip(immediately: true);
         });
-      }else{
+      } else {
         if (mounted) _tooltipController.hideTooltip(immediately: true);
       }
     });
 
     return JustTheTooltip(
-
       key: ValueKey('tooltip_${Localizations.localeOf(context).languageCode}'),
       controller: _tooltipController,
       preferredDirection: widget.preferredDirection,
@@ -91,7 +90,6 @@ class _CustomTooltipState extends State<CustomTooltip> {
       },
       onDismiss: () {
         hasShow = false;
-
       },
       content: Container(
         width: widget.sizeWidth == 0 ? null : widget.sizeWidth,
@@ -106,7 +104,7 @@ class _CustomTooltipState extends State<CustomTooltip> {
                 widget.message,
                 textAlign: TextAlign.left,
                 style:
-                TextStyle(fontSize: widget.fontSize, color: widget.color),
+                    TextStyle(fontSize: widget.fontSize, color: widget.color),
               ),
             ),
             // 右上角关闭按钮

@@ -162,7 +162,7 @@ class _ProgressDialogWidget extends State<ProgressDialogWidget> {
         progress = copySize / (totalSize * 1024 * 1024 * 1024);
       }
       String hasKill =
-          await   PreferencesHelper.getString(Constants.copyFileStatus) ?? "";
+          await PreferencesHelper.getString(Constants.copyFileStatus) ?? "";
       if (hasKill == "kill") {
         _timer?.cancel();
         changeStorageStatus = 3;
@@ -198,8 +198,7 @@ class _ProgressDialogWidget extends State<ProgressDialogWidget> {
       }
       var res = await NativeApp.stopCopy();
       if (res == "ok") {
-        await PreferencesHelper.setString(
-            Constants.copyFileStatus, "cancel");
+        await PreferencesHelper.setString(Constants.copyFileStatus, "cancel");
       }
     }
 
@@ -529,7 +528,7 @@ class _ProgressDialogWidget extends State<ProgressDialogWidget> {
                         child: LinearProgressIndicator(
                             backgroundColor: Colors.black.withOpacity(0.6),
                             valueColor: const AlwaysStoppedAnimation<Color>(
-                               AppColors.themeColor),
+                                AppColors.themeColor),
                             value: progress)),
                   )
                 ] else if (changeStorageStatus == 2) ...{

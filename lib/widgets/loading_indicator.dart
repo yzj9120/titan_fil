@@ -8,7 +8,6 @@ import '../styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart'; // 假设你使用了 GetX
 
-
 class LoadingIndicator {
   late OverlayEntry _overlayEntry;
   bool _isVisible = false;
@@ -18,12 +17,12 @@ class LoadingIndicator {
 
   /// 显示加载提示框
   void show(
-      BuildContext context, {
-        bool? showText = true,
-        String? message = 'loading',
-        Color? backgroundColor = Colors.grey,
-        Color? valueColor = AppColors.themeColor,
-      }) {
+    BuildContext context, {
+    bool? showText = true,
+    String? message = 'loading',
+    Color? backgroundColor = Colors.grey,
+    Color? valueColor = AppColors.themeColor,
+  }) {
     if (_isVisible) {
       // 如果已经显示，直接更新文字并返回
       updateMessage(message ?? 'loading');
@@ -31,7 +30,8 @@ class LoadingIndicator {
     }
 
     // 初始化文字
-    _messageNotifier.value = (message == "loading") ? "loading".tr : (message ?? "");
+    _messageNotifier.value =
+        (message == "loading") ? "loading".tr : (message ?? "");
 
     _overlayEntry = OverlayEntry(
       builder: (_) => Material(
@@ -43,7 +43,8 @@ class LoadingIndicator {
                 color: Colors.black54, // 半透明背景
                 alignment: Alignment.center,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                   decoration: BoxDecoration(
                     color: const Color(0xff181818),
                     borderRadius: BorderRadius.circular(85),
@@ -57,7 +58,8 @@ class LoadingIndicator {
                         child: CircularProgressIndicator(
                           strokeWidth: 5,
                           backgroundColor: backgroundColor,
-                          valueColor: AlwaysStoppedAnimation<Color>(valueColor!),
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(valueColor!),
                         ),
                       ),
                       if (showText == true) ...[

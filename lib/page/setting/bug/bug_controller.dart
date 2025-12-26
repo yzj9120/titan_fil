@@ -69,8 +69,7 @@ class BugController extends GetxController {
     state.email.value = account;
 
     if (state.email.value.isEmpty) {
-      String key =
-          await PreferencesHelper.getString(Constants.bindKey) ?? "";
+      String key = await PreferencesHelper.getString(Constants.bindKey) ?? "";
       if (key.isNotEmpty) {
         final response = await ApiService.getUserInfo(key);
         if (response != null) {

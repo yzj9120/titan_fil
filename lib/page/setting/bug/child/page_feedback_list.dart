@@ -12,11 +12,10 @@ class FeedbackListPage extends StatelessWidget {
   final int feedbackType;
   final String uniqueTag; // 添加唯一标识
 
-   FeedbackListPage({
-    super.key,
-    required this.historyList,
-    required this.feedbackType
-  }) : uniqueTag = 'feedback_${DateTime.now().millisecondsSinceEpoch}'; // 生成唯一tag
+  FeedbackListPage(
+      {super.key, required this.historyList, required this.feedbackType})
+      : uniqueTag =
+            'feedback_${DateTime.now().millisecondsSinceEpoch}'; // 生成唯一tag
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +59,9 @@ class FeedbackListController extends GetxController {
   }
 
   void _filterList() {
-    filteredList.assignAll(
-        historyList.where((element) =>
-        feedbackType == 2 ? element.feedbackType != 3 : element.feedbackType == 3
-        )
-    );
+    filteredList.assignAll(historyList.where((element) => feedbackType == 2
+        ? element.feedbackType != 3
+        : element.feedbackType == 3));
     print("过滤后的数据量: ${filteredList.length}");
   }
 

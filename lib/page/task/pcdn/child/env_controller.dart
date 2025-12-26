@@ -132,7 +132,7 @@ class EnvController extends GetxController {
       final result = await DownloadAgent.downloadAgent(
         onProgress: (progress) {},
       );
-      if(result.success) {
+      if (result.success) {
         return true;
       }
       // ------------------ 需要复制 ------------------
@@ -141,13 +141,14 @@ class EnvController extends GetxController {
         context: context,
         config: MessageDialogConfig(
           titleKey: "pcdn_error".tr,
-          messageKey:null,
+          messageKey: null,
           iconType: DialogIconType.error,
           buttonTextKey: "pcdn_run_copy".tr,
           childWidget: [
             _buildItem("pcdn_run_copying_tip".tr),
             _buildItem("pcdn_run_copying_tip2".tr),
-            _buildItem("pcdn_run_copying_tip3".tr.replaceAll("&", targetDir.path)),
+            _buildItem(
+                "pcdn_run_copying_tip3".tr.replaceAll("&", targetDir.path)),
           ],
           onAction: () async {
             final downUrl = Platform.isMacOS
@@ -193,11 +194,13 @@ class EnvController extends GetxController {
       return false;
     }
   }
+
 // 辅助构建方法，统一文字样式
   Widget _buildItem(String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Row( // 使用 Row 可以支持左对齐，同时保持整体居中容器
+      child: Row(
+        // 使用 Row 可以支持左对齐，同时保持整体居中容器
         children: [
           Expanded(
             child: Text(
@@ -208,7 +211,9 @@ class EnvController extends GetxController {
           ),
         ],
       ),
-    );}
+    );
+  }
+
   /// 监测环境
   Future<void> onStartOperatingEnvironment(
     BuildContext context, {

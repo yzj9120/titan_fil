@@ -34,7 +34,7 @@ class AgentController extends GetxController {
   void onInit() {
     super.onInit();
     // 初始化逻辑...
-   // _initTestData();
+    // _initTestData();
   }
 
   void _initTestData() {
@@ -55,7 +55,6 @@ class AgentController extends GetxController {
       ));
     }
   }
-
 
   Future<void> refreshData(String agentId) async {
     if (agentId.isEmpty) return;
@@ -87,7 +86,6 @@ class AgentController extends GetxController {
             : nodeRes.list;
         last7IncomeU.value = last7.map((e) => e.incomeU.toDouble()).toList();
         print('最近7天 income_u: ${last7IncomeU.value}');
-
 
         final sum = last7.fold<double>(
             0.0, (previousValue, element) => previousValue + element.incomeU);

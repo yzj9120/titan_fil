@@ -38,9 +38,9 @@ class AppUpdateData {
       filePath: json['file_path'] ?? '',
       isForceUpdate: json['is_force_update'] ?? false,
       devices: (json['devices'] as List<dynamic>?)
-          ?.map((e) => e.toString())
-          .toList()
-          ?? [],
+              ?.map((e) => e.toString())
+              .toList() ??
+          [],
     );
   }
 

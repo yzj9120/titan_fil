@@ -105,13 +105,17 @@ class _CountdownTimerState extends State<CountdownTimer> {
                 ),
                 child: Text(
                   timeDifferenceList[index],
-                  style: TextStyle(fontSize: 16, color: !widget.check ? Colors.black : widget.color),
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: !widget.check ? Colors.black : widget.color),
                 ),
               ),
               // 单位标签
               Text(
                 _getTimeUnitLabel(index),
-                style: TextStyle(fontSize: 12, color: !widget.check ? Colors.white : widget.color),
+                style: TextStyle(
+                    fontSize: 12,
+                    color: !widget.check ? Colors.white : widget.color),
               ),
             ],
           ),

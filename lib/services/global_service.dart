@@ -11,7 +11,6 @@ import 'package:titan_fil/services/scheduler_service.dart';
 import '../constants/constants.dart';
 import '../controllers/app_controller.dart';
 import '../controllers/locale_controller.dart';
-import '../controllers/notice_controller.dart';
 import '../plugins/agent_plugin.dart';
 import '../utils/FileLogger.dart';
 import '../utils/preferences_helper.dart';
@@ -25,7 +24,6 @@ class GlobalService extends GetxService {
 
   // 存储节点运行状态（是否正在运行）
   var isShowIndexPage = false.obs;
-
 
   // PCDN代理运行状态
   var isAgentRunning = false.obs;
@@ -117,18 +115,6 @@ class GlobalService extends GetxService {
     try {
       // 自动清理日志
       //await LogService().autoCleanLogs();
-      try {
-        if (Get.isRegistered<NoticeController>()) {
-          if (isShowIndexPage.value) {
-            Get.find<NoticeController>().getNotice();
-          }
-        } else {
-          _log('NoticeController not registered');
-          Get.put(NoticeController(globalService: this)).getNotice(); // 自动注册并获取
-        }
-      } catch (e) {
-        _log('Failed to get notice: $e');
-      }
       try {
         if (Get.isRegistered<AppController>()) {
           Get.find<AppController>().onCheckVer(true);
@@ -234,7 +220,6 @@ class GlobalService extends GetxService {
     }
   }
 
-
   /// 检查今天是否需要显示
   Future<void> _checkIfShouldShow() async {
     bool isPCDNRun = isAgentRunning.value;
@@ -246,7 +231,9 @@ class GlobalService extends GetxService {
       shouldShowPcdnTip.value = v;
     }
 
-    if(isPCDNRun){ shouldShowPcdnTip.value = false;}
+    if (isPCDNRun) {
+      shouldShowPcdnTip.value = false;
+    }
     // shouldShowPcdnTip.value =true;
   }
 

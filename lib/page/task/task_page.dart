@@ -26,7 +26,6 @@ class TaskPage extends StatelessWidget {
             Spacer(),
             Row(
               children: [
-
                 Spacer(),
                 Text(
                   'task_requirements_note'.tr,

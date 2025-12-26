@@ -227,7 +227,6 @@ class LogsController extends GetxController {
   }
 
   Future<void> onSendLogs(BuildContext context) async {
-
     DateTime now = DateTime.parse(state.selectedTime.value);
     // DateTime now = DateTime.now();
     // final today = DateTime(now.year, now.month, now.day);

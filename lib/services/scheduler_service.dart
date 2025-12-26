@@ -31,15 +31,14 @@ class SchedulerService {
     _timers[taskId]?.cancel();
     _timers.remove(taskId);
   }
+
   /// 重启周期性任务
   void restartPeriodicTask(
-      String taskId,
-      Duration interval,
-      void Function() task
-      ) {
+      String taskId, Duration interval, void Function() task) {
     cancelTask(taskId); // 先取消
     schedulePeriodicTask(taskId, interval, task); // 再启动
   }
+
   /// 取消所有任务
   void cancelAllTasks() {
     _timers.forEach((_, timer) => timer.cancel());

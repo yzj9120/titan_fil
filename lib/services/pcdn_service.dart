@@ -350,7 +350,8 @@ class PCDNService {
             _log("${logBuffer.toString()}");
             // 3. 标记完成：失败
             if (!completer.isCompleted) {
-              completer.complete({'status': false, 'error': "pcd_restartError".tr});
+              completer
+                  .complete({'status': false, 'error': "pcd_restartError".tr});
             }
           }
         },
@@ -518,7 +519,6 @@ class PCDNService {
       _index++;
     }
     logBuffer.writeln("run agent....");
-
 
     AgentPlugin().monitorAgentStatus(
       context,

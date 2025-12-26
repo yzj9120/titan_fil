@@ -10,7 +10,6 @@ import 'package:visibility_detector/visibility_detector.dart';
 
 import '../../config/app_config.dart';
 import '../../constants/constants.dart';
-import '../../controllers/notice_controller.dart';
 import '../../models/check_info.dart';
 import '../../network/api_service.dart';
 import '../../services/global_service.dart';
@@ -18,7 +17,6 @@ import '../../services/log_service.dart';
 import '../../services/pcdn_service.dart';
 import '../../utils/app_helper.dart';
 import '../../utils/preferences_helper.dart';
-import '../../widgets/dialog_notice.dart';
 import '../../widgets/loading_indicator.dart';
 import '../../widgets/message_dialog.dart';
 import '../../widgets/toast_dialog.dart';
@@ -30,7 +28,6 @@ import 'home_state.dart';
 class HomeController extends GetxController {
   final HomePageState state = HomePageState();
   final globalService = Get.find<GlobalService>();
-  final noticeController = Get.find<NoticeController>();
 
   ///初始化
   @override
@@ -162,11 +159,6 @@ class HomeController extends GetxController {
   Future<void> onStopProgressButton(BuildContext context) async {
     final pcdnService = PCDNService.getInstance();
     await pcdnService.onStop(context);
-  }
-
-  /// 打开通知
-  void onOpenNoticeDialog(BuildContext context) {
-    DialogNotice.show(context);
   }
 
   /// 打开节点收益

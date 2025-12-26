@@ -28,7 +28,6 @@ class VirtualBoxPlugin extends BasePlugin {
 
   VirtualBoxPlugin._internal();
 
-
   Future<bool> checkVirtualBoxVersion() async {
     Process? process;
     final logBuffer = StringBuffer();
@@ -84,7 +83,6 @@ class VirtualBoxPlugin extends BasePlugin {
       logBuffer.clear();
     }
   }
-
 
   ///设置环境变量
   Future<bool> updateSystemPath() async {

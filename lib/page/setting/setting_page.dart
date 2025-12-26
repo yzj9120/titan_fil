@@ -29,7 +29,6 @@ class SettingPage extends StatelessWidget {
                 child: RepaintBoundary(
                   child: (() {
                     switch (logic.state.selectedIndex.value) {
-
                       case 0:
                         return SetPcdnPage();
                       case 1:
@@ -40,7 +39,6 @@ class SettingPage extends StatelessWidget {
                         return SettingAbout();
                       default:
                         return Container();
-
                     }
                   })(),
                 ),

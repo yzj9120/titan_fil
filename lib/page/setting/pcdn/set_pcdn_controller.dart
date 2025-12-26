@@ -304,9 +304,8 @@ class SetPcdnController extends GetxController {
 
     if (tag == 4) {
       String input = state.bandwidthEditingController.text.trim();
-      final result = await BatShRunner().runLimitScript(
-          '${input}', '${input}',
-          vbName: state.vbName..trim());
+      final result = await BatShRunner()
+          .runLimitScript('${input}', '${input}', vbName: state.vbName..trim());
       if (result.success) {
         _onToastMsg(context, "task_pcdn_bandwidth".tr);
         await PreferencesHelper.setString(Constants.bandwidth, input);

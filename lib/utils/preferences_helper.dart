@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,11 +17,16 @@ class PreferencesHelper {
   static List<String>? getStringList(String key) => _prefs.getStringList(key);
 
   // 基础类型写入
-  static Future<bool> setString(String key, String value) => _prefs.setString(key, value);
-  static Future<bool> setInt(String key, int value) => _prefs.setInt(key, value);
-  static Future<bool> setBool(String key, bool value) => _prefs.setBool(key, value);
-  static Future<bool> setDouble(String key, double value) => _prefs.setDouble(key, value);
-  static Future<bool> setStringList(String key, List<String> value) => _prefs.setStringList(key, value);
+  static Future<bool> setString(String key, String value) =>
+      _prefs.setString(key, value);
+  static Future<bool> setInt(String key, int value) =>
+      _prefs.setInt(key, value);
+  static Future<bool> setBool(String key, bool value) =>
+      _prefs.setBool(key, value);
+  static Future<bool> setDouble(String key, double value) =>
+      _prefs.setDouble(key, value);
+  static Future<bool> setStringList(String key, List<String> value) =>
+      _prefs.setStringList(key, value);
 
   // 通用写入（自动根据类型判断）
   static Future<bool> set(String key, dynamic value) {

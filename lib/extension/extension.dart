@@ -3,9 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 
-
 extension EmojiTextExtension on String {
-
   /// 显示适配Windows/macOS的Emoji文本
   Widget toEmojiText({
     double fontSize = 14,
@@ -91,6 +89,7 @@ extension StringExtension on String {
     final num = double.tryParse(this);
     return num?.truncate() ?? 0;
   }
+
   /// 将字符串数字四舍五入到整数
   int toRoundToInt() {
     final num = double.tryParse(this);
@@ -214,7 +213,6 @@ extension TimeExtensions on double {
 }
 
 extension DateTimeExtension on DateTime {
-
   String toLogFormat() {
     return '${year.toString()}-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
   }
@@ -244,6 +242,7 @@ extension DoubleExtension on double {
       return this;
     }
   }
+
   /// 检查小数位数并返回 int（可选）
   int toIntFixed() {
     String valueStr = toString();
@@ -273,13 +272,13 @@ extension TimestampExtension on int {
 }
 
 extension SizeUnitConverter on double {
-
   String removeUnit(String sizeWithUnit) {
     // 匹配数字（包括小数点和整数）
     final regex = RegExp(r'^(\d+\.?\d*)');
     final match = regex.firstMatch(sizeWithUnit);
     return match?.group(1) ?? sizeWithUnit; // 如果匹配失败，返回原字符串
   }
+
   /// 智能转换文件大小
   ///
   /// @param fromUnit 输入单位 (B/KB/MB/GB/TB)
@@ -308,14 +307,21 @@ extension SizeUnitConverter on double {
 
   double _toBytes(String fromUnit) {
     switch (fromUnit.toUpperCase()) {
-      case 'B':  return this;
-      case 'KB': return this * 1024;
-      case 'MB': return this * pow(1024, 2);
-      case 'GB': return this * pow(1024, 3);
-      case 'TB': return this * pow(1024, 4);
-      default: throw ArgumentError('Invalid unit: $fromUnit');
+      case 'B':
+        return this;
+      case 'KB':
+        return this * 1024;
+      case 'MB':
+        return this * pow(1024, 2);
+      case 'GB':
+        return this * pow(1024, 3);
+      case 'TB':
+        return this * pow(1024, 4);
+      default:
+        throw ArgumentError('Invalid unit: $fromUnit');
     }
   }
+
   _UnitResult _calculateBestUnit(double bytes, int fractionDigits) {
     const units = ['B', 'KB', 'MB', 'GB', 'TB'];
     int unitIndex = 0;
@@ -327,9 +333,7 @@ extension SizeUnitConverter on double {
     }
 
     return _UnitResult(
-        double.parse(value.toStringAsFixed(fractionDigits)),
-        units[unitIndex]
-    );
+        double.parse(value.toStringAsFixed(fractionDigits)), units[unitIndex]);
   }
 }
 

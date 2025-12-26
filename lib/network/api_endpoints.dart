@@ -5,9 +5,6 @@ import '../config/toml_config.dart';
  */
 
 class ApiEndpoints {
-  // 检测是否符合4测
-  static String checkT4BaseUrl = "https://test4.titannet.io";
-
   //IP解析
   static String ipResolutionUrl = "https://api-test1.container1.titannet.io";
 
@@ -57,21 +54,20 @@ class ApiEndpoints {
   static const String uploadLog = '/api/network/upload_log';
   static const String gitbook = '/api/v1/url/gitbook';
 
-  static String get webServerURLV4 =>
-      TomlConfig.getUrl('Network.WebServerURLT4');
+  static String get webServerURLV4 => TomlConfig.getUrl('Network.WebServerURLT4');
 
-  static String get agentServerV4 =>
-      TomlConfig.getUrl('Network.AgentServerURLT4');
+  static String get agentServerV4 => TomlConfig.getUrl('Network.AgentServerURLT4');
 
   static String get nodeInfoURLV4 => TomlConfig.getUrl('Network.NodeInfoURLT4');
 
-  static String get webServerURLV3 => TomlConfig.getUrl('Network.WebServerURL');
+  // static String get webServerURLV3 => TomlConfig.getUrl('Network.WebServerURL');
 
-  static String get nodeInfoURLV3 => TomlConfig.getUrl('Network.NodeInfoURL');
+  // static String get nodeInfoURLV3 => TomlConfig.getUrl('Network.NodeInfoURL');
 
-  static String get locatorURL => TomlConfig.getUrl('Network.LocatorURL');
+  // static String get locatorURL => TomlConfig.getUrl('Network.LocatorURL');
 
-  static String get storageURL => TomlConfig.getUrl('Network.StorageURL');
+  // static String get storageURL => TomlConfig.getUrl('Network.StorageURL');
 
-  static String get bindServerURLV4 => TomlConfig.getUrl('Network.BindServerURLV4');
+  static String get bindServerURLV4 =>
+      TomlConfig.getUrl('Network.BindServerURLV4');
 }

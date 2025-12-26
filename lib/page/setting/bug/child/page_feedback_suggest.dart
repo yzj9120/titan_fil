@@ -209,7 +209,7 @@ class PageFeedbackSuggestPage extends StatelessWidget {
                           child: InkWell(
                             child: const Icon(
                               Icons.highlight_remove,
-                              color:Colors.white10,
+                              color: Colors.white10,
                               size: 15,
                             ),
                             onTap: () {
@@ -406,7 +406,9 @@ class PageFeedbackSuggestPage extends StatelessWidget {
                             ),
                             child: Text(
                               "confirm".tr,
-                              style: const TextStyle(color: Colors.black, fontSize: 13,
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),

@@ -29,7 +29,7 @@ class BasePlugin {
         Steps(title: "pcd_ubuntuUnlink"),
         Steps(title: "pcd_systemBootCommand"),
       ]);
-    } else if(tag==2){
+    } else if (tag == 2) {
       basicSteps.addAll([
         Steps(title: "pcd_hyperVCheck"),
         Steps(title: "pcd_hyperVStatusCheck"),
@@ -38,7 +38,7 @@ class BasePlugin {
         Steps(title: "pcd_ubuntuUnlink"),
         Steps(title: "pcd_systemBootCommand"),
       ]);
-    }else{
+    } else {
       basicSteps.addAll([
         Steps(title: "pcd_multiPassCheck"),
         Steps(title: "pcd_ubuntuUnlink"),

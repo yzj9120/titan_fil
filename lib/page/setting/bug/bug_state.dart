@@ -23,5 +23,4 @@ class BugState {
   var feedbackTypeListEn = ['Opinion', 'Consult', 'Other'];
   int feedbackStatus = 0;
   RxInt hoverIndex = 0.obs;
-
 }

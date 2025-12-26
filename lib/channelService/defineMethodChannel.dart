@@ -109,6 +109,7 @@ class DefineMethodChannel {
       return false;
     }
   }
+
   static Future<dynamic> runMultipassList() async {
     try {
       return await _channel.invokeMethod('runMultipassList');
@@ -117,8 +118,6 @@ class DefineMethodChannel {
       return false;
     }
   }
-
-
 
   static Future<Map<String, dynamic>> installSbinMultipass() async {
     try {

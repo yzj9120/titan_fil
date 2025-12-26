@@ -7,6 +7,7 @@ import 'package:titan_fil/widgets/LoadingWidget.dart';
 
 import '../../../../models/bug_picture.dart';
 import '../bug_controller.dart';
+
 ///反馈bug
 class PageFeedbackBug extends StatelessWidget {
   final logic = Get.find<BugController>();

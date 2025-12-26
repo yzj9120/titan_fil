@@ -22,6 +22,7 @@ class DownLoadPSTools {
       final workingDir = await FileHelper.getWorkAgentPath();
       String savePath = path.join(workingDir, "tools.zip");
       String extractToPath = path.join(workingDir, "PSTools");
+
       ///只支持设置win
       if (Platform.isWindows) {
         final file = File(savePath);

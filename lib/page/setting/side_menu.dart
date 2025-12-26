@@ -72,12 +72,11 @@ class _SideMenuState extends State<SideMenu> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                   decoration: BoxDecoration(
-                   // color: getBackgroundColor(index, isSelected),
+                    // color: getBackgroundColor(index, isSelected),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: isSelected
-                          ? AppColors.themeColor2
-                          : AppColors.c1818,
+                      color:
+                          isSelected ? AppColors.themeColor2 : AppColors.c1818,
                       width: 1,
                     ),
                   ),

@@ -46,7 +46,7 @@ class LaunchBeforeCommand {
     // ==========================================================
     // 如果工作目录都没准备好，后续的日志和配置都会失败，所以这里单独 await
     await _safeRun(
-          () => FileHelper.initializeWorkDir(logBuffer),
+      () => FileHelper.initializeWorkDir(logBuffer),
       "initializeWorkDir",
       timeout: const Duration(seconds: 30), // 文件操作超时短一点
     );
@@ -101,7 +101,8 @@ class LaunchBeforeCommand {
       if (Platform.isWindows) {
         var windowsInfo = await deviceInfo.windowsInfo;
         // 处理 Windows Device ID 的花括号
-        deviceId = windowsInfo.deviceId.replaceAll("{", "").replaceAll("}", "").trim();
+        deviceId =
+            windowsInfo.deviceId.replaceAll("{", "").replaceAll("}", "").trim();
       } else if (Platform.isMacOS) {
         var macInfo = await deviceInfo.macOsInfo;
         deviceId = macInfo.systemGUID;
@@ -128,8 +129,6 @@ class LaunchBeforeCommand {
       final logService = LogService();
       await logService.init();
     }, "LogService init");
-
-
   }
 
   static Future<void> _initServicesAndControllers() async {
@@ -181,10 +180,8 @@ class LaunchBeforeCommand {
   /// [taskName] 任务名称，用于日志记录
   /// [timeout] 默认 30 秒超时，防止某个步骤卡死导致 APP 无法启动
   static Future<void> _safeRun(
-      FutureOr<dynamic> Function() task,
-      String taskName,
-      {Duration timeout = const Duration(seconds: 30)}
-      ) async {
+      FutureOr<dynamic> Function() task, String taskName,
+      {Duration timeout = const Duration(seconds: 30)}) async {
     try {
       // 使用 Future.value 包裹 task() 以兼容同步和异步函数
       // timeout() 方法确保如果 task 卡住，会抛出 TimeoutException

@@ -56,9 +56,9 @@ class NetworkHelper {
     for (String url in ipServices) {
       try {
         final response = await client.get(Uri.parse(url)).timeout(
-          const Duration(seconds: 5),
-          onTimeout: () => throw TimeoutException("请求超时"),
-        );
+              const Duration(seconds: 5),
+              onTimeout: () => throw TimeoutException("请求超时"),
+            );
 
         if (response.statusCode == 200) {
           final ip = _extractIP(response.body);

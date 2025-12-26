@@ -1,6 +1,3 @@
-
-
-
 class UserData {
   final String address;
   final String account;

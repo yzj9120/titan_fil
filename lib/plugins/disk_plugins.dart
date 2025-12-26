@@ -33,7 +33,8 @@ class DiskPlugins {
           logBuffer.writeln("Invalid drive letter in path: $path;call 0.0");
           return 0.0;
         }
-        final freeSpaceBytes = await DesktopDiskSpace.instance.getFreeSpace(drive) ?? 0;
+        final freeSpaceBytes =
+            await DesktopDiskSpace.instance.getFreeSpace(drive) ?? 0;
         if (freeSpaceBytes <= 0) {
           logBuffer.writeln("No free space available: $drive call 0.0");
           return 0.0;

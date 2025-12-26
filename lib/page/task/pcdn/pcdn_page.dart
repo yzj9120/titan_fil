@@ -18,7 +18,7 @@ class PcdnPage extends GetView<PCDNController> {
   static const double _radiusMedium = 22.0;
   static const double _radiusSmall = 41.0;
   static const double _featureRadius = 73.0;
-  static const double pageWidth = 580*2;
+  static const double pageWidth = 580 * 2;
   static const double pageHeight = 492;
 
   @override

@@ -29,18 +29,7 @@ class _SideMenuState extends State<SideMenu> {
 
   @override
   void initState() {
-    getDiscordURL();
     super.initState();
-  }
-
-  Future<void> getDiscordURL() async {
-    final res = await ApiService.discord();
-    if (res != null && res.url.isNotEmpty) {
-      discordURL = res.url.toString();
-    } else {
-      discordURL = AppConfig.discordURL;
-    }
-    //debugPrint('discord: ${res}');
   }
 
   void _onChangeIndex(int index) {
