@@ -13,15 +13,7 @@ class PageTitleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Row(
-          children: [
-            _buildStorageSettingsCard(context, logic),
-            const SizedBox(width: 10),
-            _buildCpuSettingsCard(context, logic),
-            const SizedBox(width: 10),
-            _buildDataMigrationCard(context, logic),
-          ],
-        ));
+    return Obx(() =>  _buildStorageSettingsCard(context, logic));
   }
 }
 
@@ -36,122 +28,43 @@ class _BugConstants {
 
 extension _SetPcdnPageCards on PageTitleView {
   Widget _buildStorageSettingsCard(BuildContext ctx, BugController log) {
-    return Expanded(
-      child: MouseRegion(
-        onEnter: (_) => logic.state.hoverIndex.value = 1,
-        onExit: (_) => logic.state.hoverIndex.value = 0,
-        child: Container(
-          height: _BugConstants.cardHeight,
-          padding: _BugConstants.cardPadding,
-          decoration: _cardDecoration(logic.state.hoverIndex.value == 1
-              ? AppColors.themeColor
-              : AppColors.c1818),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildStorageLimitRow(log.state),
-              const SizedBox(height: 10),
-              const Spacer(),
-              _buildSaveButton(
-                  ctx,
-                  logic.state.hoverIndex.value == 1
-                      ? AppColors.themeColor
-                      : Colors.transparent,
-                  logic.state.hoverIndex.value == 1
-                      ? AppColors.c1818
-                      : AppColors.themeColor,
-                  logic.state.hoverIndex.value == 1
-                      ? AppTextStyles.textStyle10black
-                          .copyWith(fontWeight: FontWeight.bold)
-                      : AppTextStyles.textStyle10black.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.themeColor), () {
-                log.onHelpView(ctx);
-              }),
-            ],
-          ),
+    return MouseRegion(
+      onEnter: (_) => logic.state.hoverIndex.value = 1,
+      onExit: (_) => logic.state.hoverIndex.value = 0,
+      child: Container(
+        height: _BugConstants.cardHeight,
+        padding: _BugConstants.cardPadding,
+        decoration: _cardDecoration(logic.state.hoverIndex.value == 1
+            ? AppColors.themeColor
+            : AppColors.c1818),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildStorageLimitRow(log.state),
+            const SizedBox(height: 10),
+            const Spacer(),
+            _buildSaveButton(
+                ctx,
+                logic.state.hoverIndex.value == 1
+                    ? AppColors.themeColor
+                    : Colors.transparent,
+                logic.state.hoverIndex.value == 1
+                    ? AppColors.c1818
+                    : AppColors.themeColor,
+                logic.state.hoverIndex.value == 1
+                    ? AppTextStyles.textStyle10black
+                    .copyWith(fontWeight: FontWeight.bold)
+                    : AppTextStyles.textStyle10black.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.themeColor), () {
+              log.onHelpView(ctx);
+            }),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildCpuSettingsCard(BuildContext ctx, BugController log) {
-    return Expanded(
-      child: MouseRegion(
-        onEnter: (_) => logic.state.hoverIndex.value = 2,
-        onExit: (_) => logic.state.hoverIndex.value = 0,
-        child: Container(
-          height: _BugConstants.cardHeight,
-          padding: _BugConstants.cardPadding,
-          decoration: _cardDecoration(logic.state.hoverIndex.value == 2
-              ? AppColors.themeColor
-              : AppColors.c1818),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildStorageMigrationLimitRow(log.state),
-              const Spacer(),
-              _buildSaveButton(
-                  ctx,
-                  logic.state.hoverIndex.value == 2
-                      ? AppColors.themeColor
-                      : Colors.transparent,
-                  logic.state.hoverIndex.value == 2
-                      ? AppColors.c1818
-                      : AppColors.themeColor,
-                  logic.state.hoverIndex.value == 2
-                      ? AppTextStyles.textStyle10black
-                          .copyWith(fontWeight: FontWeight.bold)
-                      : AppTextStyles.textStyle10black.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.themeColor), () {
-                log.onFeedbackView(ctx);
-              }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDataMigrationCard(BuildContext ctx, BugController log) {
-    return Expanded(
-      child: MouseRegion(
-        onEnter: (_) => logic.state.hoverIndex.value = 3,
-        onExit: (_) => logic.state.hoverIndex.value = 0,
-        child: Container(
-          height: _BugConstants.cardHeight,
-          padding: _BugConstants.cardPadding,
-          decoration: _cardDecoration(logic.state.hoverIndex.value == 3
-              ? AppColors.themeColor
-              : AppColors.c1818),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildCpuLimitRow(log.state),
-              const Spacer(),
-              _buildSaveButton(
-                  ctx,
-                  logic.state.hoverIndex.value == 3
-                      ? AppColors.themeColor
-                      : Colors.transparent,
-                  logic.state.hoverIndex.value == 3
-                      ? AppColors.c1818
-                      : AppColors.themeColor,
-                  logic.state.hoverIndex.value == 3
-                      ? AppTextStyles.textStyle10black
-                          .copyWith(fontWeight: FontWeight.bold)
-                      : AppTextStyles.textStyle10black.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.themeColor), () {
-                log.onReportView(ctx);
-              }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
   BoxDecoration _cardDecoration(Color color) {
     return BoxDecoration(
@@ -172,23 +85,7 @@ extension _SetPcdnPageRows on PageTitleView {
     );
   }
 
-  Widget _buildStorageMigrationLimitRow(BugState state) {
-    return _buildLimitRow(
-      "bug_btn_feedback".tr,
-      state.hoverIndex.value == 2
-          ? AppTextStyles.textStyle12black
-          : AppTextStyles.textStyle12white,
-    );
-  }
 
-  Widget _buildCpuLimitRow(BugState state) {
-    return _buildLimitRow(
-      "bug_btn_suggestions".tr,
-      state.hoverIndex.value == 3
-          ? AppTextStyles.textStyle12black
-          : AppTextStyles.textStyle12white,
-    );
-  }
 
   Widget _buildLimitRow(String title, TextStyle titleStyle) {
     return Row(
