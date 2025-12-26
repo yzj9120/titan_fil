@@ -17,13 +17,11 @@ class BugPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(BugController()); // 确保全局单例
-    return Obx(() {
-      return AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        margin: const EdgeInsets.all(22),
-        child: _buildContent(controller),
-      );
-    });
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      margin: const EdgeInsets.all(22),
+      child: _buildContent(controller),
+    );
   }
 
   Widget _buildContent(BugController controller) {
@@ -46,14 +44,7 @@ class BugPage extends StatelessWidget {
       child: Row(
         children: [
           const SizedBox(width: 18),
-          // Container(
-          //   width: 4,
-          //   height: 13,
-          //   decoration: BoxDecoration(
-          //     color: AppColors.btn,
-          //     borderRadius: BorderRadius.circular(10),
-          //   ),
-          // ),
+
           Assets.images.icTag.image(width: 31),
 
           const SizedBox(width: 5),

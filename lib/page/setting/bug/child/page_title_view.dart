@@ -13,7 +13,7 @@ class PageTitleView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>  _buildStorageSettingsCard(context, logic));
+    return _buildStorageSettingsCard(context, logic);
   }
 }
 
@@ -31,7 +31,7 @@ extension _SetPcdnPageCards on PageTitleView {
     return MouseRegion(
       onEnter: (_) => logic.state.hoverIndex.value = 1,
       onExit: (_) => logic.state.hoverIndex.value = 0,
-      child: Container(
+      child: Obx(()=>Container(
         height: _BugConstants.cardHeight,
         padding: _BugConstants.cardPadding,
         decoration: _cardDecoration(logic.state.hoverIndex.value == 1
@@ -61,7 +61,7 @@ extension _SetPcdnPageCards on PageTitleView {
             }),
           ],
         ),
-      ),
+      )),
     );
   }
 
