@@ -57,7 +57,7 @@ class StepKey extends StatelessWidget {
         const SizedBox(height: 20),
 
         RichText(
-          textAlign: TextAlign.right, // 可选，双重保证
+          textAlign: TextAlign.left, // 可选，双重保证
           text: TextSpan(
             style: AppTextStyles.textStyle12,
             children: [

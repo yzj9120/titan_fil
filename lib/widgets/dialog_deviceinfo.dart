@@ -104,20 +104,20 @@ class DialogDeviceInfo {
       // 代码会暂停在这里，直到 agentIdCompleter.complete 被调用
       agentId = await agentIdCompleter.future;
       // --- 核心修改结束 ---
-      debugPrint("DialogDeviceInfo agentId: $agentId");
+     // debugPrint("DialogDeviceInfo agentId: $agentId");
 
       NodeInfo? nodeInfo;
       UserData? userData;
       if (agentId.isNotEmpty) {
         nodeInfo = await ApiService.fetchNodeInfo(agentId);
       }
-      debugPrint("DialogDeviceInfo nodeInfo: ${nodeInfo.toString()}");
+     // debugPrint("DialogDeviceInfo nodeInfo: ${nodeInfo.toString()}");
       String key = await PreferencesHelper.getString(Constants.bindKey) ?? "";
       if (key.isNotEmpty) {
         //mQFWviNLBmJ2 //sM7BFQRmg1HI
         userData = await ApiService.getUserInfo(key);
       }
-      debugPrint("DialogDeviceInfo getUserInfo: ${userData.toString()}");
+    //  debugPrint("DialogDeviceInfo getUserInfo: ${userData.toString()}");
 
       final items = buildDeviceItems({
         'PCDNID': agentId,

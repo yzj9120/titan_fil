@@ -31,7 +31,7 @@ class ApiService {
 
   static Future<String> fetchNodeDetails(String nodeId) async {
     var linkUrl =
-        "https://fil-hong.titannet.io/${ApiEndpoints.nodeDetails}?node_id=${Uri.encodeComponent(nodeId)}";
+        "https://fil-hong.titannet.io/Status?text=${Uri.encodeComponent(nodeId)}";
     return linkUrl;
   }
 
