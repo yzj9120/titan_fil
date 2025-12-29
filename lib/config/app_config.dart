@@ -49,18 +49,17 @@ class AppConfig {
       "$cnPodoeUrl$urlAddress/3-ce-ka-xi-ni-ce-shi-wang/guan-yu-ka-xi-ni-ce-shi-wang";
   static String t3urlEn = "$enUrl/cassini-testnet/about-cassini-testnet";
   static String t4urlCn =
-      "$cnPodoeUrl$urlAddress/4-ce-jia-li-le-ce-shi-wang/guan-yu-jia-li-le-ce-shi-wang";
-  static String t4urlEn = "$enUrl/galileo-testnet/about-galileo-testnet";
+      "https://titannet.gitbook.io/titan-network-cn/titan-fil/titanfil-zi-yuan-can-yu-zhi-nan";
+  static String t4urlEn = "https://titannet.gitbook.io/titan-network-cn/titan-network-en/titan-fil/titan-fil-agent-installation-guide";
   static String helpCn2 =
-      "$cnPodoeUrl$urlAddress/4-ce-jia-li-le-ce-shi-wang/chang-jian-wen-ti/win-ke-hu-duan-jie-dian-yun-xing-chang-jian-wen-ti";
+      "https://help.titanapp.info/titan-network-zhong-wen/titan-fil/titanfil-ke-shi-hua-ke-hu-duan-jie-dian-yun-xing-chang-jian-wen-ti";
   static String helpEn2 =
-      "https://titannet.gitbook.io/titan-network-en/galileo-testnet/f.a.q./faq-for-windows-gui-client";
+      "https://help.titanapp.info/titan-network-en/titan-fil/faq-for-titan-fil-gui-client";
 
   static String t4WebUrlNodeRewardsZH =
-      "$cnPodoeUrl$urlAddress/4-ce-jia-li-le-ce-shi-wang/chang-jian-wen-ti/xin-jie-dian-shang-ji-gong-le-cong-cheng-gong-yun-xing-dao-shou-yi-ti-sheng";
+      "https://help.titanapp.info/titan-network-zhong-wen/titan-fil/titanfil-xin-jie-dian-shang-ji-gong-le-cong-cheng-gong-yun-xing-dao-shou-yi-ti-sheng";
 
-  static String t4WebUrlNodeRewardsEN =
-      "$enUrl/galileo-testnet/f.a.q./how-to-increase-node-rewards";
+  static String t4WebUrlNodeRewardsEN = "https://help.titanapp.info/titan-network-en/titan-fil/how-to-increase-titan-fil-node-rewards";
 
   static String downCheckVmNames =
       "https://pcdn.titannet.io/test4/bin/check_vm_names";
@@ -87,9 +86,9 @@ class AppConfig {
       "https://download.sysinternals.com/files/PSTools.zip";
 
 
-  static String keyWebUrl =
-      "https://fil-hong.titannet.io/";
-
-
+  static String keyWebUrlZH =
+      "https://help.titanapp.info/titan-network-zhong-wen/titan-fil/ru-he-huo-qu-key";
+  static String keyWebUrlEN =
+      "https://help.titanapp.info/titan-network-en/titan-fil/how-to-get-the-key";
 
 }

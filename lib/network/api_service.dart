@@ -55,6 +55,7 @@ class ApiService {
     ApiResponse response = await _httpClient.request(
       url,
       method: "GET",
+      isCN: true
     );
     if (response.code == 200) {
       return NodeInfo.fromJson(response.data);

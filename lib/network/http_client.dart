@@ -9,6 +9,7 @@ import 'dart:io';
 import 'package:archive/archive.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as p;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -69,6 +70,7 @@ class HttpClientUtils {
     String url, {
     String method = 'GET',
     bool isLangCode = true,
+    bool isCN = false,
     Map<String, dynamic>? queryParameters,
     dynamic data,
     Map<String, dynamic>? headers,
@@ -85,6 +87,9 @@ class HttpClientUtils {
         langCode = (await SharedPreferences.getInstance())
                 .getString(Constants.langCode) ??
             'en';
+        if (isCN && langCode == "zh") {
+          langCode = "cn";
+        }
       } catch (e) {
         _log("langCode :error:$e");
       }
@@ -92,6 +97,7 @@ class HttpClientUtils {
         if (isLangCode) 'lang': langCode,
         if (headers != null) ...headers,
       };
+      debugPrint("huangzhen:headersWithToken=${headersWithToken}");
       // 设置请求选项
       final options = Options(headers: headersWithToken, method: method);
       // 针对 GET 方法，允许传递 body

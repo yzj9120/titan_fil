@@ -163,7 +163,10 @@ class BindController extends GetxController {
   }
 
   void onOpenWebBingKey(BuildContext context) {
-    AppHelper.openUrl(context, AppConfig.keyWebUrl);
+    bool isChineseLocale = globalService.localeController.isChineseLocale();
+    var webUrl =
+        isChineseLocale ? AppConfig.keyWebUrlZH : AppConfig.keyWebUrlEN;
+    AppHelper.openUrl(context, webUrl);
   }
 
   void onVisibilityChanged(VisibilityInfo info) {
@@ -407,26 +410,18 @@ class BindController extends GetxController {
     }
   }
 
-  // 更宽松的验证规则
+// 更宽松的验证规则
   String? validateKey(String key) {
-    if (key.isEmpty) {
-      return "bind_email_length_error".tr;
-    }
     String trimmedKey = key.trim();
-
-    // 方案1: 只验证基本格式
-    if (trimmedKey.length < 10 || trimmedKey.length > 20) {
-      return "bind_key_length_error".tr;
-    }
-    // 方案2: 更简单的验证 - 只验证是否为字母数字
-    final simpleRegExp = RegExp(r'^[a-zA-Z0-9]+$');
-    if (!simpleRegExp.hasMatch(trimmedKey)) {
-      return "bind_key_format_error".tr;
+    if (trimmedKey.isEmpty ||
+        trimmedKey.length < 10 ||
+        trimmedKey.length > 20 ||
+        !RegExp(r'^[a-zA-Z0-9]+$').hasMatch(trimmedKey)) {
+      return "bind_email_length_error".tr;
     }
 
     return null;
   }
-
 //VnwmeYRg8CeP
   Future<void> onBindKey(BuildContext context, String key) async {
     // 验证 key
