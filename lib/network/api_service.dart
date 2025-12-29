@@ -31,7 +31,7 @@ class ApiService {
 
   static Future<String> fetchNodeDetails(String nodeId) async {
     var linkUrl =
-        "${ApiEndpoints.webServerURLV4}${ApiEndpoints.nodeDetails}?node_id=${Uri.encodeComponent(nodeId)}";
+        "https://fil-hong.titannet.io/${ApiEndpoints.nodeDetails}?node_id=${Uri.encodeComponent(nodeId)}";
     return linkUrl;
   }
 
@@ -269,6 +269,16 @@ class ApiService {
     final localeController = Get.find<GlobalService>().localeController;
     final lang = localeController.locale() == 1 ? "cn" : "en";
     ApiResponse response = await _httpClient.uploadFile(logFile, lang, url);
+    return response;
+  }
+
+  static Future<ApiResponse> verifyKey(String key) async {
+    var parameter = "?key=$key";
+    var url = "${ApiEndpoints.webServerURLV4}${ApiEndpoints.verifyKey}$parameter";
+    ApiResponse response = await _httpClient.request(
+      url,
+      method: "GET",
+    );
     return response;
   }
 }

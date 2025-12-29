@@ -111,10 +111,6 @@ class AgentPlugin extends BasePlugin {
 
   Future<String> readAgentId() async {
     try {
-      // todo:hhh
-      // String libsPath = await FileHelper.getParentPath();
-      // String workingDir = path.join(libsPath, AppConfig.workingDir, '.titanagent', 'agent_id');
-
       String agentPath = await FileHelper.getWorkAgentPath();
       String workingDir = path.join(agentPath, '.titanagent', 'agent_id');
       final file = File(workingDir);

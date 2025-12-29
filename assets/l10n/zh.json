@@ -132,7 +132,6 @@
   "bind_email_format_error": "邮箱格式不对",
   "bind_email_empty_error": "邮箱不能为空",
   "bind_code_empty_error": "邮箱验证码不能为空",
-  "bind_email_length_error": "邮箱验证码为6为数字",
   "bind_no_start_node": "绑定账户时需要启动节点并运行节点",
   "bind_code_snd": "验证码发送中",
   "bind_code_snd_ok": "验证码发送成功",
@@ -411,6 +410,13 @@
   "pcdn_run_copying_tip2": "1.重新下载安装包（推荐）",
   "pcdn_run_copying_tip3": "2.手动下载Agent.zip并解压到：& 文件夹中",
   "pcdn_downpour": "下载地址",
-  "pcdn_error": "Agent文件丢失或损坏"
+  "pcdn_error": "Agent文件丢失或损坏",
+  "bind_email_length_error": "Key长度必须为12个字符",
+  "bind_key_length_error": "Key长度错误，必须为12个字符",
+  "bind_key_format_error": "Key格式错误，首字母必须大写",
+  "bind_key_contains_space": "Key不能包含空格",
+  "bind_key_special_char": "Key不能包含特殊字符",
+  "bind_key_empty_error": "Key不能为空",
+  "bind_pcdn_first": "请先启动PCDN，启动成功后再进行绑定"
 }
 

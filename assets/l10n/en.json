@@ -132,7 +132,6 @@
   "bind_email_format_error": "Invalid email format",
   "bind_email_empty_error": "Email cannot be empty",
   "bind_code_empty_error": "Verification code cannot be empty",
-  "bind_email_length_error": "Verification code must be 6 digits",
   "bind_no_start_node": "You must start and run the node before binding your account",
   "bind_code_snd": "Sending verification code",
   "bind_code_snd_ok": "Verification code sent successfully",
@@ -412,5 +411,13 @@
   "pcdn_run_copying_tip2": "1. Re-download the installation package (recommended)",
   "pcdn_run_copying_tip3": "2. Manually download Agent.zip and extract it to the & folder",
   "pcdn_downpour": "Download link",
-  "pcdn_error": "Agent files are missing or corrupted."
+  "pcdn_error": "Agent files are missing or corrupted.",
+  "bind_email_length_error": "Key length must be 12 characters",
+  "bind_key_length_error": "Key length error, must be 12 characters",
+  "bind_key_format_error": "Key format error, first letter must be uppercase",
+  "bind_key_contains_space": "Key cannot contain spaces",
+  "bind_key_special_char": "Key cannot contain special characters",
+  "bind_key_empty_error": "Key cannot be empty",
+  "bind_pcdn_first": "Please start PCDN first. After successful startup, proceed with the binding."
+
 }

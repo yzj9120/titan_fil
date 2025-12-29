@@ -17,6 +17,7 @@ import '../../plugins/agent_plugin.dart';
 import '../../services/global_service.dart';
 import '../../services/log_service.dart';
 import '../../services/pcdn_service.dart';
+import '../../utils/LoggerUtil.dart';
 import '../../utils/app_helper.dart';
 import '../../widgets/loading_indicator.dart';
 import '../../widgets/toast_dialog.dart';
@@ -50,6 +51,8 @@ class BindController extends GetxController {
   }
 
   Future<void> init() async {
+    debugPrint('hasBind: tinit');
+
     logBuffer.clear();
     logBuffer.writeln("bing account:");
     state.load.value = false;
@@ -101,6 +104,7 @@ class BindController extends GetxController {
   Future<void> getPageInfoStatus() async {
     /// 最后通过节点ID查询
     final t4key = await getPCDNKey();
+    debugPrint('hasBind: t4key=$t4key');
 
     /// 如果KEY存在表明已经绑定，因为不管是否绑定了，key存在都会自动绑定
     bool hasT4Bind = t4key.isNotEmpty;
@@ -136,6 +140,13 @@ class BindController extends GetxController {
         isChineseLocale ? AppConfig.usdcWalletUrlCn : AppConfig.usdcWalletUrlEn;
     AppHelper.openUrl(context, webUrl);
   }
+
+  void onOpenWebBingKey(BuildContext context) {
+    AppHelper.openUrl(context, AppConfig.keyWebUrl);
+  }
+
+
+
 
   void onVisibilityChanged(VisibilityInfo info) {
     final isVisible = info.visibleFraction > 0;
@@ -302,7 +313,6 @@ class BindController extends GetxController {
   Future<void> _onHandBind(BuildContext context, LoadingIndicator loading,
       String nodeKey, String email) async {
     logBuffer.writeln("start bing: $nodeKey; $email");
-
     /// 绑定4测key :
     final result = await AgentPlugin().bindKey(nodeKey);
     logBuffer.writeln("bind bindT4: $result");
@@ -376,6 +386,67 @@ class BindController extends GetxController {
     if (result) {
       onAddStep();
       startTimer();
+    }
+  }
+
+  // 更宽松的验证规则
+  String? validateKey(String key) {
+    if (key.isEmpty) {
+      return "bind_email_length_error".tr;
+    }
+    String trimmedKey = key.trim();
+
+    // 方案1: 只验证基本格式
+    if (trimmedKey.length < 10 || trimmedKey.length > 20) {
+      return "bind_key_length_error".tr;
+    }
+    // 方案2: 更简单的验证 - 只验证是否为字母数字
+    final simpleRegExp = RegExp(r'^[a-zA-Z0-9]+$');
+    if (!simpleRegExp.hasMatch(trimmedKey)) {
+      return "bind_key_format_error".tr;
+    }
+
+    return null;
+  }
+
+  Future<void> onBindKey(BuildContext context, String key) async {
+    // 验证 key
+    String? errorMessage = validateKey(key);
+    if (errorMessage != null) {
+      // 显示错误提示
+      _onErrorMsg(context, errorMessage);
+      return;
+    }
+    if (globalService.agentId.isNotEmpty) {
+      ///启动过不需要启动4测即可绑定
+      _onErrorMsg(context, "bind_pcdn_first".tr);
+    } else {
+      /// 没有启动过 再启动一次
+      final pcdService = PCDNService.getInstance();
+      bool isOpen = globalService.pcdnMonitoringStatus.value == 3;
+      pcdService.startAutoEarningProcess(context, isOpen: isOpen);
+    }
+    // 验证通过，继续操作
+   final loading = LoadingIndicator();
+    loading.show(context, message: "bind_loading".tr);
+    ApiResponse res = await ApiService.verifyKey(key);
+    if(res.code!=200){
+      loading.hide();
+      _onErrorMsg(context, "${res.msg}");
+      return;
+    }
+    LoggerUtil.d("${res.toString()}");
+    /// 绑定4测key :
+    final result = await AgentPlugin().bindKey(key);
+    logBuffer.writeln("bind bindT4: $result");
+    try {
+      await initValue();
+      await getPageInfoStatus();
+      loading.hide();
+    } catch (e) {
+      loading.hide();
+      _onErrorMsg(context, 'error:$e');
+      _log("exit 8:${logBuffer.toString()}");
     }
   }
 
