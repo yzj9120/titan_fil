@@ -9,6 +9,9 @@ class BindPageState {
   var step = 1.obs;
   var bindStatus = (-1).obs;
   var email = "".obs;
+  var key = "".obs;
+  var agentId = "".obs;
+
   var load = false.obs;
   var emailCodeStatus = 0.obs;
   Rx<String> sndError = "".obs;

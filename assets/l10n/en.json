@@ -56,7 +56,6 @@
   "index_income_node_1": "1.Please ensure your node's status and service tasks are running normally. If any issues arise, contact customer support immediately.",
   "index_income_node_2": "2.New nodes undergo a 3–5 day observation period. Low or no earnings during this time is normal—keep your node online 24/7.",
   "index_income_node_3": "3.Enable IPv6 and UPnP for optimized network configuration. This is the simplest and most effective way to increase node earnings.",
-
   "index_todayIncome": "Today's earnings",
   "index_revenue_trend": "Earnings trend",
   "node_status_succeed": "Running",
@@ -314,7 +313,6 @@
   "notAvailable": "Unavailable",
   "copied_clipboard": "Copied to clipboard",
   "pcd_des": "Share idle bandwidth to earn FIL rewards and FIL tokens. \n After running tasks, contribute your unused idle bandwidth to the Titan FIL for earnings. The more upload bandwidth consumed, the higher your earnings will increase.",
-
   "storage_des": "Share idle storage to earn TNT3 rewards. \n After running tasks, contribute your device's storage space to the Titan FIL for earnings. The more storage consumed, the higher your earnings will be.",
   "vpn_des_tip": "*Note: When using a proxy network, the displayed network information may differ from your actual connection. Data updates are not in real-time.",
   "update_app_current_Version": "Current Version",
@@ -418,6 +416,12 @@
   "bind_key_contains_space": "Key cannot contain spaces",
   "bind_key_special_char": "Key cannot contain special characters",
   "bind_key_empty_error": "Key cannot be empty",
-  "bind_pcdn_first": "Please start PCDN first. After successful startup, proceed with the binding."
-
+  "bind_pcdn_first": "Please start PCDN first. After successful startup, proceed with the binding.",
+  "bind_pcdn_success": "PCDN bound successfully!",
+  "fil_wallet_address": "FIL Wallet Address",
+  "bind_key_button": "Bind PCDN Key",
+  "input_key_placeholder": "Enter your key",
+  "no_key_hint": "Don't have a key?",
+  "click_here_prompt": "Please click here",
+  "view_tutorial": "View the registration and binding tutorial"
 }

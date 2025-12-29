@@ -20,6 +20,7 @@ import '../../services/pcdn_service.dart';
 import '../../utils/LoggerUtil.dart';
 import '../../utils/app_helper.dart';
 import '../../widgets/loading_indicator.dart';
+import '../../widgets/message_dialog.dart';
 import '../../widgets/toast_dialog.dart';
 import 'bind_state.dart';
 
@@ -56,7 +57,6 @@ class BindController extends GetxController {
     logBuffer.clear();
     logBuffer.writeln("bing account:");
     state.load.value = false;
-    await initValue();
     await getPageInfoStatus();
     state.load.value = true;
   }
@@ -90,21 +90,42 @@ class BindController extends GetxController {
     return null;
   }
 
-  Future<void> initValue({int retryCount = 0}) async {
-    const maxRetries = 5;
-    // 2. 检查是否满足终止条件
-    if (retryCount >= maxRetries) {
-      return; // 终止递归
-    }
-    // 3. 不满足条件时，延迟后重试
-    await Future.delayed(Duration(seconds: 1));
-    await initValue(retryCount: retryCount + 1);
-  }
-
   Future<void> getPageInfoStatus() async {
     /// 最后通过节点ID查询
     final t4key = await getPCDNKey();
-    debugPrint('hasBind: t4key=$t4key');
+    state.key.value = t4key;
+    // 创建一个 Completer 用于等待 agentId 获取成功或超时
+    final agentIdCompleter = Completer<String>();
+    // 1. 定义轮询参数
+    const int maxRetries = 10; // 最大重试次数 (例如 10 次)
+    const Duration interval = Duration(seconds: 3); // 执行间隔 (例如 3 秒)
+    int retryCount = 0;
+    // 2. 启动定时器
+    final timer = Timer.periodic(interval, (timer) async {
+      retryCount++;
+      debugPrint("queryAgentId attempt: $retryCount");
+      // 尝试获取 agentId
+      final currentId = Get.find<GlobalService>().agentId;
+      // A. 成功获取
+      if (currentId.isNotEmpty) {
+        timer.cancel();
+        if (!agentIdCompleter.isCompleted) {
+          agentIdCompleter.complete(currentId);
+        }
+      }
+      // B. 达到最大次数仍未获取
+      else if (retryCount >= maxRetries) {
+        timer.cancel();
+        if (!agentIdCompleter.isCompleted) {
+          // 这里可以选择返回空字符串或者抛出异常，视业务逻辑而定
+          agentIdCompleter.complete("");
+          debugPrint("queryAgentId timeout");
+        }
+      }
+    });
+    // 3. 关键点：等待轮询结束
+    // 代码会暂停在这里，直到 agentIdCompleter.complete 被调用
+    state.agentId.value = await agentIdCompleter.future;
 
     /// 如果KEY存在表明已经绑定，因为不管是否绑定了，key存在都会自动绑定
     bool hasT4Bind = t4key.isNotEmpty;
@@ -144,9 +165,6 @@ class BindController extends GetxController {
   void onOpenWebBingKey(BuildContext context) {
     AppHelper.openUrl(context, AppConfig.keyWebUrl);
   }
-
-
-
 
   void onVisibilityChanged(VisibilityInfo info) {
     final isVisible = info.visibleFraction > 0;
@@ -313,11 +331,11 @@ class BindController extends GetxController {
   Future<void> _onHandBind(BuildContext context, LoadingIndicator loading,
       String nodeKey, String email) async {
     logBuffer.writeln("start bing: $nodeKey; $email");
+
     /// 绑定4测key :
     final result = await AgentPlugin().bindKey(nodeKey);
     logBuffer.writeln("bind bindT4: $result");
     try {
-      await initValue();
       await getPageInfoStatus();
       loading.hide();
     } catch (e) {
@@ -409,40 +427,78 @@ class BindController extends GetxController {
     return null;
   }
 
+//VnwmeYRg8CeP
   Future<void> onBindKey(BuildContext context, String key) async {
     // 验证 key
     String? errorMessage = validateKey(key);
     if (errorMessage != null) {
-      // 显示错误提示
       _onErrorMsg(context, errorMessage);
       return;
     }
-    if (globalService.agentId.isNotEmpty) {
-      ///启动过不需要启动4测即可绑定
-      _onErrorMsg(context, "bind_pcdn_first".tr);
-    } else {
-      /// 没有启动过 再启动一次
-      final pcdService = PCDNService.getInstance();
-      bool isOpen = globalService.pcdnMonitoringStatus.value == 3;
-      pcdService.startAutoEarningProcess(context, isOpen: isOpen);
-    }
     // 验证通过，继续操作
-   final loading = LoadingIndicator();
+    final loading = LoadingIndicator();
     loading.show(context, message: "bind_loading".tr);
     ApiResponse res = await ApiService.verifyKey(key);
-    if(res.code!=200){
+    if (res.code != 200) {
       loading.hide();
       _onErrorMsg(context, "${res.msg}");
       return;
     }
-    LoggerUtil.d("${res.toString()}");
-    /// 绑定4测key :
-    final result = await AgentPlugin().bindKey(key);
-    logBuffer.writeln("bind bindT4: $result");
+    // 创建Completer来处理异步结果
+    final completer = Completer<bool>();
+    Timer? timer;
+    int queryCount = 0;
+    const maxQueries = 30;
+    // 立即检查一次
+    if (globalService.agentId.isNotEmpty) {
+      loading.hide();
+      _bindKeyDirectly(context, key, loading);
+      return;
+    }
+    timer = Timer.periodic(Duration(seconds: 2), (timer) {
+      queryCount++;
+      // 检查 agentId 是否存在
+      if (globalService.agentId.isNotEmpty) {
+        timer.cancel();
+        completer.complete(true);
+        return;
+      }
+      // 检查是否超时（1分钟）
+      if (queryCount >= maxQueries) {
+        timer.cancel();
+        completer.complete(false);
+      }
+    });
+    // 等待查询结果（不固定等待1分钟，而是等待completer完成）
+    bool hasAgentId = await completer.future;
+    // 取消定时器
+    timer?.cancel();
+    // 根据查询结果处理
+    if (hasAgentId) {
+      // 查询到了 agentId，说明已经启动过，直接绑定
+      await _bindKeyDirectly(context, key, loading);
+    } else {
+      // 没查询到 agentId，说明没有启动过，启动PCDN服务
+      final pcdService = PCDNService.getInstance();
+      bool isOpen = globalService.pcdnMonitoringStatus.value == 3;
+      pcdService.startAutoEarningProcess(context, isOpen: isOpen);
+      loading.hide();
+      _onErrorMsg(context, 'bind_pcdn_first'.tr);
+    }
+  }
+
+  Future<void> _bindKeyDirectly(
+      BuildContext context, String key, LoadingIndicator loading) async {
     try {
-      await initValue();
+      final result = await AgentPlugin().bindKey(key);
+      logBuffer.writeln("bind bindT4: $result");
       await getPageInfoStatus();
       loading.hide();
+      if (state.bindStatus.value == 0 && state.email.value.isNotEmpty) {
+        ToastHelper.showSuccess(context,
+            message: "PCDN:${globalService.agentId}".tr,
+            title: "bind_pcdn_success".tr);
+      }
     } catch (e) {
       loading.hide();
       _onErrorMsg(context, 'error:$e');

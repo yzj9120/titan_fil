@@ -417,6 +417,13 @@
   "bind_key_contains_space": "Key不能包含空格",
   "bind_key_special_char": "Key不能包含特殊字符",
   "bind_key_empty_error": "Key不能为空",
-  "bind_pcdn_first": "请先启动PCDN，启动成功后再进行绑定"
+  "bind_pcdn_first": "请先启动PCDN，启动成功后再进行绑定",
+  "bind_pcdn_success": "绑定成功！",
+  "fil_wallet_address": "FIL钱包地址",
+  "bind_key_button": "绑定Key",
+  "input_key_placeholder": "请输入您的key",
+  "no_key_hint": "暂无key?",
+  "click_here_prompt": "请点击此处",
+  "view_tutorial": "查看注册与绑定教程"
 }
 

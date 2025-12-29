@@ -27,7 +27,7 @@ class StepKey extends StatelessWidget {
       children: [
         const SizedBox(height: 25),
         Text(
-          '绑定key'.tr,
+          'bind_key_button'.tr,
           style: AppTextStyles.textStyle12gray,
         ),
         const SizedBox(height: 20),
@@ -46,7 +46,7 @@ class StepKey extends StatelessWidget {
             style: AppTextStyles.textStyle12,
             readOnly: !isEdit,
             decoration: InputDecoration(
-              hintText: '请输入您的key'.tr,
+              hintText: 'input_key_placeholder'.tr,
               hintStyle: AppTextStyles.textStyle12,
               border: InputBorder.none,
               contentPadding:
@@ -73,10 +73,10 @@ class StepKey extends StatelessWidget {
                 alignment: PlaceholderAlignment.middle,
               ),
               TextSpan(
-                text: "暂无key?请".tr
+                text: "no_key_hint".tr
               ),
               TextSpan(
-                text: "点击此次".tr,
+                text: "click_here_prompt".tr,
                 style: AppTextStyles.textUnderline.copyWith(
                   fontSize: 12,
                   color: AppColors.themeColor,
@@ -87,7 +87,7 @@ class StepKey extends StatelessWidget {
                   },
               ),
               TextSpan(
-                text: "查看注册于绑定教程".tr,
+                text: "view_tutorial".tr,
               ),
             ],
           ),
