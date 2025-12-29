@@ -145,7 +145,7 @@ class DialogDeviceInfo {
             child: Center(
               child: Container(
                 width: 850,
-                height: 400,
+                height: 450,
                 decoration: const BoxDecoration(
                   color: Color(0xFF181818),
                   borderRadius: BorderRadius.all(Radius.circular(15)),
