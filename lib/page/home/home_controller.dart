@@ -94,6 +94,7 @@ class HomeController extends GetxController {
 
       loading.show(context, message: "task_check_t4_tip11".tr);
       CheckInfo? checkRes = await ApiService.checkActivity();
+
       if (checkRes == null) {
         loading.hide();
         _onErrorMsg(context, "task_check_t4_tip12".tr);

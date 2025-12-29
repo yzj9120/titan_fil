@@ -85,4 +85,11 @@ class AppConfig {
 
   static String downPSTools =
       "https://download.sysinternals.com/files/PSTools.zip";
+
+
+  static String keyWebUrl =
+      "https://fil-hong.titannet.io/";
+
+
+
 }

@@ -219,6 +219,7 @@ class PCDNService {
     logBuffer.clear(); // 清空所有内容
     // ========== 第一步：检查运营区域 ==========
     _globalService.pcdnMonitoringStatus.value = 7;
+    debugPrint("启动自动赚钱流程:"+ isOpen.toString());
     if (!isOpen) {
       try {
         logBuffer.writeln("auto start :");
@@ -227,7 +228,7 @@ class PCDNService {
         if (!checkArea) {
           _globalService.pcdnMonitoringStatus.value = 2;
           _log("${logBuffer.toString()}");
-          return {'status': false, 'error': "auto start checkArea:$checkArea"};
+          return {'status': false, 'error': "Area not supported"};
         }
       } catch (e) {
         _globalService.pcdnMonitoringStatus.value = 2;
