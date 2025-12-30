@@ -66,13 +66,7 @@ class EnvController extends GetxController {
   }
 
   String _getHelpUrl({required bool isChinese, required bool isHome}) {
-    if (isHome) {
-      return isChinese ? AppConfig.t4HomeHelpUrlCn : AppConfig.t4HomeHelpUrlEn;
-    } else {
-      return isChinese
-          ? AppConfig.t4MajorHelpUrlCn
-          : AppConfig.t4MajorHelpUrlEn;
-    }
+    return isChinese ? AppConfig.t4HomeHelpUrlCn : AppConfig.t4HomeHelpUrlEn;
   }
 
   void _handleError(BuildContext context, dynamic error) {

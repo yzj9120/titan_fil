@@ -28,9 +28,9 @@ class AppConfig {
   static String t4WebUrlEN = "$enUrl/galileo-testnet/participation-guide";
   static String t4WebWaitingAddress = "https://tally.so/r/3lV1xX";
   static String t4HomeHelpUrlCn =
-      "$cnPodoeUrl/4-ce-jia-li-le-ce-shi-wang/titan-agent-an-zhuang-jiao-cheng/windows-xi-tong/windows-ke-shi-hua-ke-hu-duan-jiao-cheng";
+      "https://help.titanapp.info/titan-network-zhong-wen/titan-fil/titanfil-agent-an-zhuang-jiao-cheng/windows-xi-tong/cliwindows-chang-jian-wen-ti";
   static String t4HomeHelpUrlEn =
-      "$enUrl/galileo-testnet/titan-agent-installation-guide/windows/intall-titan-agent-on-windows-home";
+      "https://help.titanapp.info/titan-network-en/titan-fil/titan-fil-agent-installation-guide/windows/faq-for-windows";
   static String t4MajorHelpUrlCn =
       "$cnPodoeUrl$urlAddress/4-ce-jia-li-le-ce-shi-wang/titan-agent-an-zhuang-jiao-cheng/windows-xi-tong/windows-ke-shi-hua-ke-hu-duan-jiao-cheng";
   static String t4MajorHelpUrlEn =
