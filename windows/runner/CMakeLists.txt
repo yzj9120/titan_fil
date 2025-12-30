@@ -16,9 +16,9 @@ add_executable(${BINARY_NAME} WIN32
         "runner.exe.manifest"
 )
 # 添加管理员权限链接设置
-#set_target_properties(${BINARY_NAME} PROPERTIES
-#        LINK_FLAGS "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\" /SUBSYSTEM:WINDOWS"
-#)
+set_target_properties(${BINARY_NAME} PROPERTIES
+        LINK_FLAGS "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\" /SUBSYSTEM:WINDOWS"
+)
 # Apply the standard set of build settings. This can be removed for applications
 # that need different build settings.
 apply_standard_settings(${BINARY_NAME})
