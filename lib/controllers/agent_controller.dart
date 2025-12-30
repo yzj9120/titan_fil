@@ -10,6 +10,7 @@ import '../models/node_info.dart';
 import '../network/api_service.dart';
 import '../services/global_service.dart';
 import '../styles/app_colors.dart';
+import '../utils/LoggerUtil.dart';
 import '../utils/app_helper.dart';
 import '../widgets/message_dialog.dart';
 import '../widgets/toast_dialog.dart';
@@ -69,6 +70,8 @@ class AgentController extends GetxController {
       final nodeDataRes = results[1] as NodeData?;
       final nodeRes = results[2] as NodeIncomeData?;
 
+      // LoggerUtil.d(nodeInfoRes);
+
       if (nodeInfoRes != null) nodeInfo.value = nodeInfoRes;
       if (nodeDataRes != null) nodeData.value = nodeDataRes;
       if (nodeDataRes != null) {
@@ -85,12 +88,9 @@ class AgentController extends GetxController {
             ? nodeRes.list.sublist(nodeRes.list.length - 7)
             : nodeRes.list;
         last7IncomeU.value = last7.map((e) => e.incomeU.toDouble()).toList();
-        print('最近7天 income_u: ${last7IncomeU.value}');
-
         final sum = last7.fold<double>(
             0.0, (previousValue, element) => previousValue + element.incomeU);
         last7IncomeUSum.value = sum;
-        print('最近7天 income_u 总和: $sum');
       }
 
       if (globalService.isAgentOnline.value &&
@@ -113,7 +113,7 @@ class AgentController extends GetxController {
     if (nodeIncomeList.isEmpty) return 0.0;
     return nodeIncomeList.reversed
         .take(7)
-        .fold(0.0, (sum, item) => sum + (item.income ?? 0.0));
+        .fold(0.0, (sum, item) => sum + (item.incomeU ?? 0.0));
   }
 
   double getMaxIncome() {

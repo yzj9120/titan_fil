@@ -26,13 +26,8 @@ class MyLineChart extends StatelessWidget {
     var maxIncome = agentController.nodeIncomeList
         .map((incomeData) => incomeData.incomeU.toDouble())
         .reduce((a, b) => a > b ? a : b);
-    if (maxIncome < 4) {
-      maxIncome = 4;
-    }
     return maxIncome * 1.1; // 添加10%的余量
   }
-
-  /// 第二组数据的固定Y轴最大值
 
   /// 主图表配置
   LineChartData get sampleData1 => LineChartData(
@@ -81,7 +76,7 @@ class MyLineChart extends StatelessWidget {
             return LineTooltipItem(
               'FIL: ${spot.y.toStringAsFixed(4)}', // 直接显示y值
               TextStyle(
-                color: AppColors.cff0084,
+                color: AppColors.white,
                 fontSize: 12,
               ),
             );
@@ -116,11 +111,12 @@ class MyLineChart extends StatelessWidget {
         reservedSize: 40,
       );
 
+
   /// 右侧Y轴标题（显示最大值的4等分）
   double getInterval() {
     final primaryMaxY = _calculatePrimaryMaxY();
-    // 确保返回合理的间隔值
-    return (primaryMaxY / 4).clamp(1.0, double.infinity); // 最小间隔为1.0
+    if (primaryMaxY == 0) return 1.0; // 防止为0的情况
+    return primaryMaxY / 4;
   }
 
   SideTitles rightTitles() => SideTitles(

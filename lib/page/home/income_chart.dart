@@ -7,6 +7,7 @@ import '../../../gen/assets.gen.dart';
 import '../../../styles/app_colors.dart';
 import '../../controllers/agent_controller.dart';
 import '../../controllers/miner_controller.dart';
+import '../../utils/LoggerUtil.dart';
 import '../../widgets/custom_tooltip.dart';
 import 'home_controller.dart';
 import 'line_chart_sample1.dart';
@@ -241,59 +242,49 @@ class IncomeChart extends StatelessWidget {
 
   /// 构建收益卡片行
   Widget _buildIncomeCardsRow(BuildContext context, HomeController logic) {
-    final minerController = Get.find<MinerController>();
     final agentController = Get.find<AgentController>();
+
     return Row(
       children: [
         Obx(() {
-          final value = agentController.nodeInfo.value?.income ?? 0;
-          final unit = value.toString().length > 6 ? ".." : "";
-          final usdcValue = agentController.nodeInfo.value?.incomeU ?? 0;
-          final usdcUnit = usdcValue.toString().length > 6 ? ".." : "";
+          final value = agentController.nodeInfo.value?.receivedIncome ?? 0;
+          final value2 = agentController.nodeInfo.value?.remainder_income ?? 0;
+          final v = value+ value2;
+          final unit = v.toString().length > 6 ? ".." : "";
           return _buildIncomeCard(
               icon: Assets.images.icHomeIncome.image(width: 45),
               label: "index_totalIncome".tr,
-              value: value,
+              value: v,
               unit: "$unit FIL".tr,
-              usdcValue: usdcValue,
-              usdcUnit: "$usdcUnit FIL".tr,
-              type: 2);
+              usdcValue: 0,
+              usdcUnit: "$unit FIL".tr,
+              type: 1);
         }),
         const SizedBox(width: 10),
         Obx(() {
           final value = agentController.last7DaysIncomeSum();
           final unit = value.toString().length > 6 ? ".." : "";
-
-          final usdcValue = agentController.last7IncomeUSum.value ?? 0;
-          final usdcUnit = usdcValue.toString().length > 6 ? ".." : "";
-
           return _buildIncomeCard(
               icon: Assets.images.icHomeIncome7.image(width: 45),
               label: "index_weekIncome".tr,
               value: value,
               unit: "$unit FIL".tr,
-              usdcValue: usdcValue,
-              usdcUnit: "$usdcUnit FIL".tr,
-              type: 2);
+              usdcValue: 0,
+              usdcUnit: "$unit FIL".tr,
+              type: 1);
         }),
         const SizedBox(width: 10),
         Obx(() {
           final value = agentController.nodeInfo.value?.todayIncome ?? 0;
           final unit = value.toString().length > 6 ? ".." : "";
-          // 取最后一天的数据，如果列表为空则为 0.0
-          final usdcValue = (agentController.last7IncomeU.isNotEmpty)
-              ? agentController.last7IncomeU.last
-              : 0.0;
-          final usdcStr = usdcValue.toString();
-          final usdcUnit = usdcStr.length > 6 ? ".." : "";
           return _buildIncomeCard(
               icon: Assets.images.icHomeIncomeToady.image(width: 45),
               label: "index_todayIncome".tr,
               value: value,
               unit: "$unit FIL".tr,
-              usdcValue: usdcValue,
-              usdcUnit: "$usdcUnit FIL".tr,
-              type: 2);
+              usdcValue: 0,
+              usdcUnit: "$unit FIL".tr,
+              type: 1);
         }),
       ],
     );

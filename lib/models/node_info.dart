@@ -20,6 +20,8 @@ class NodeInfo {
   final double storageSpaceUsage;
   final double income;
   final double todayIncome;
+  final double receivedIncome;
+  final double remainder_income;
   final int updateAt;
   final String systemVer;
   final String appVer;
@@ -61,6 +63,8 @@ class NodeInfo {
     required this.storageSpace,
     required this.storageSpaceUsage,
     required this.income,
+    required this.receivedIncome,
+    required this.remainder_income,
     required this.todayIncome,
     required this.updateAt,
     required this.systemVer,
@@ -105,6 +109,8 @@ class NodeInfo {
       storageSpaceUsage: (json["storage_space_usage"] ?? 0).toDouble(),
       income: (json["income"] ?? 0).toDouble(),
       todayIncome: (json["today_income"] ?? 0).toDouble(),
+      receivedIncome: (json["received_income"] ?? 0).toDouble(),
+      remainder_income: (json["remainder_income"] ?? 0).toDouble(),
       updateAt: json["update_at"] ?? 0,
       systemVer: json["system_ver"] ?? "",
       appVer: json["app_ver"] ?? "",
@@ -146,6 +152,7 @@ class NodeInfo {
       "cpu_usage": cpuUsage,
       "memory": memory,
       "memory_usage": memoryUsage,
+      "remainder_income": remainder_income,
       "storage_space": storageSpace,
       "storage_space_usage": storageSpaceUsage,
       "income": income,
