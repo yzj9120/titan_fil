@@ -446,7 +446,7 @@ class BindController extends GetxController {
     const maxQueries = 30;
     // 立即检查一次
     if (globalService.agentId.isNotEmpty) {
-      loading.hide();
+      // loading.hide();
       _bindKeyDirectly(context, key, loading);
       return;
     }
