@@ -28,7 +28,7 @@ StorageURL = "https://storage.titannet.io"
 
 
 WebServerURLT4 = "https://fil-api.titannet.io"
-AgentServerURLT4 = "https://fil-agnet-server-api.titannet.io"
+AgentServerURLT4 = "https://fil-agent-server-api.titannet.io"
 NodeInfoURLT4 = "https://fil-api.titannet.io"
 BindServerURLV4 = "https://fil-api.titannet.io"
 
