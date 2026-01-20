@@ -20,3 +20,161 @@ run6:手动（未测）
 
 
 
+# Filecoin Titan Agent 资源文件
+
+> 生成时间: 2026-01-19 17:47
+
+本文档包含所有 **filagent** 和 **filcontroller** 的下载地址及 MD5 校验值。
+
+---
+
+## 📦 filagent 系列
+
+| 平台 | 文件名 | 下载地址 | MD5 值 |
+|------|--------|----------|--------|
+| Linux (amd64) | `filagent-linux.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-linux.zip` | `7bea134c01bc565e49e6338ab1fc4f1e` |
+| Linux (arm64) | `filagent-linux-arm64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-linux-arm64.zip` | `7bc3d65b178902f0836799f34171b049` |
+| Linux (arm) | `filagent-arm.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-arm.zip` | `7305bd4450a642b168dbb76c87205504` |
+| Linux (arm64 通用) | `filagent-arm64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-arm64.zip` | `dc85a7d6c3d1fc36e9705bb02242080e` |
+| macOS (amd64) | `filagent-darwin.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin.zip` | `b77a6f7a8621f0505a5fd3345708164f` |
+| macOS (arm64) | `filagent-darwin-arm64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin-arm64.zip` | `11b5a4eead32767fe547595faef2684a` |
+| Windows (amd64) | `filagent-windows.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-windows.zip` | `fc518c467e1b205846ea017b07ae2820` |
+| Android (arm64) | `filagent-android.zip` | `https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-android.zip` | `ff337b2a0ab76ee76f20da3832c6ba84` |
+
+---
+
+## 📦 filcontroller 系列
+
+| 平台 | 文件名 | 下载地址 | MD5 值 |
+|------|--------|----------|--------|
+| Linux (amd64) | `filcontroller-linux-amd64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-linux-amd64.zip` | `6e8c4b93c3edd275eb72b8a46b34d3ba` |
+| Linux (arm64) | `filcontroller-linux-arm64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-linux-arm64.zip` | `78cb56af101043c1541423afbba7c89c` |
+| Linux (arm) | `filcontroller-linux-arm.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-linux-arm.zip` | `4ea173f837c068f86638a725d1a19b13` |
+| macOS (amd64) | `filcontroller-darwin-amd64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-darwin-amd64.zip` | `c2ed2e288c2c19feed6f5db8905bb1a7` |
+| Windows (amd64) | `filcontroller-windows-amd64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-windows-amd64.zip` | `58fd186ef12ae6c00ce6cf9696043ad6` |
+| Android (arm64) | `filcontroller-android-arm64.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-android-arm64.zip` | `31418d704e43afbdfeec2b6b42e7ddab` |
+| Android (box) | `filcontroller-android-box.zip` | `https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-android-box.zip` | `fc8a05f8048de01fe03fad4ec9902f50` |
+
+---
+
+## 📋 config.yaml 配置参考
+
+### agentFileList 配置
+
+```yaml
+agentFileList:
+  - name: linux-agent
+    version: 0.1.0
+    md5: 7bea134c01bc565e49e6338ab1fc4f1e
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-linux.zip'
+    os: linux
+    tag: ''
+  - name: linux-arm64-agent
+    version: 0.1.0
+    md5: 7bc3d65b178902f0836799f34171b049
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-linux-arm64.zip'
+    os: linux
+    tag: 'arm64,armv8,aarch64,arm'
+  - name: darwin-agent
+    version: 0.1.0
+    md5: b77a6f7a8621f0505a5fd3345708164f
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin.zip'
+    os: darwin
+    tag: ''
+  - name: darwin-arm64-agent
+    version: 0.1.0
+    md5: 11b5a4eead32767fe547595faef2684a
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin-arm64.zip'
+    os: darwin
+    tag: 'arm64'
+  - name: windows-agent
+    version: 0.1.0
+    md5: fc518c467e1b205846ea017b07ae2820
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-windows.zip'
+    os: windows
+    tag: ''
+  - name: android-agent
+    version: 0.1.0
+    md5: ff337b2a0ab76ee76f20da3832c6ba84
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-android.zip'
+    os: android
+    tag: ''
+  - name: arm-agent
+    version: 0.1.0
+    md5: 7305bd4450a642b168dbb76c87205504
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-arm.zip'
+    os: linux
+    tag: 'arm,armv7l,armv7'
+```
+
+### controllerFileList 配置
+
+```yaml
+controllerFileList:
+  - name: linux-controller
+    version: 0.1.0
+    md5: 6e8c4b93c3edd275eb72b8a46b34d3ba
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-linux-amd64.zip'
+    os: linux
+    tag: ''
+  - name: linux-arm64-controller
+    version: 0.1.0
+    md5: 78cb56af101043c1541423afbba7c89c
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-linux-arm64.zip'
+    os: linux
+    tag: 'arm64,armv8,aarch64,arm'
+  - name: darwin-controller
+    version: 0.1.0
+    md5: c2ed2e288c2c19feed6f5db8905bb1a7
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-darwin-amd64.zip'
+    os: darwin
+    tag: ''
+  - name: windows-controller
+    version: 0.1.0
+    md5: 58fd186ef12ae6c00ce6cf9696043ad6
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-windows-amd64.zip'
+    os: windows
+    tag: ''
+  - name: android-controller
+    version: 0.1.1
+    md5: 31418d704e43afbdfeec2b6b42e7ddab
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-android-arm64.zip'
+    os: android
+    tag: ''
+  - name: android-controller-box
+    version: 0.1.1
+    md5: fc8a05f8048de01fe03fad4ec9902f50
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-android-box.zip'
+    os: android
+    tag: 'box'
+  - name: arm-controller
+    version: 0.1.0
+    md5: 4ea173f837c068f86638a725d1a19b13
+    url: 'https://pcdn.titannet.io/filpcdn/bin/filcontroller/filcontroller-linux-arm.zip'
+    os: linux
+    tag: 'arm,armv7l,armv7'
+```
+
+---
+
+## 📁 本地文件列表
+
+所有文件位于: `/Users/zt/Desktop/filecoin-titan-agent/script/bin/`
+
+```
+filagent-android.zip          filagent-android.zip.md5
+filagent-arm.zip              filagent-arm.zip.md5
+filagent-arm64.zip            filagent-arm64.zip.md5
+filagent-darwin.zip           filagent-darwin.zip.md5
+filagent-darwin-arm64.zip     filagent-darwin-arm64.zip.md5
+filagent-linux.zip            filagent-linux.zip.md5
+filagent-linux-arm64.zip      filagent-linux-arm64.zip.md5
+filagent-windows.zip          filagent-windows.zip.md5
+filcontroller-android-arm64.zip     filcontroller-android-arm64.zip.md5
+filcontroller-android-box.zip       filcontroller-android-box.zip.md5
+filcontroller-darwin-amd64.zip      filcontroller-darwin-amd64.zip.md5
+filcontroller-linux-amd64.zip       filcontroller-linux-amd64.zip.md5
+filcontroller-linux-arm.zip         filcontroller-linux-arm.zip.md5
+filcontroller-linux-arm64.zip       filcontroller-linux-arm64.zip.md5
+filcontroller-windows-amd64.zip     filcontroller-windows-amd64.zip.md5
+```

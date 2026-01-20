@@ -10,10 +10,10 @@ class AppConfig {
 
   static const String workingDir = 'titan_fil_agent';
   static const String appTitle = 'Titan FIL';
-  static String agentProcess = Platform.isMacOS ? 'agent' : "agent.exe";
+  static String agentProcess = Platform.isMacOS ? 'filagent' : "filagent.exe";
   static String mainProcess = Platform.isMacOS ? 'titan_fil' : "titan_fil.exe";
   static String controllerProcess =
-      Platform.isMacOS ? 'controller' : 'controller.exe';
+      Platform.isMacOS ? 'filcontroller' : 'filcontroller.exe';
   static String checkVmNamesProcess =
       Platform.isMacOS ? 'check_vm_names' : 'check_vm_names.exe';
   static const String officialWebsiteURL = "https://titannet.io";
@@ -23,18 +23,15 @@ class AppConfig {
   static const String enUrl = "https://titannet.gitbook.io/titan-network-en";
 
   static const String urlAddress = "/titan-network-zhong-wen";
-  static String t4WebUrlZH =
-      "$cnPodoeUrl/4-ce-jia-li-le-ce-shi-wang/zi-yuan-can-yu-zhi-nan";
+  static String t4WebUrlZH = "$cnPodoeUrl/4-ce-jia-li-le-ce-shi-wang/zi-yuan-can-yu-zhi-nan";
   static String t4WebUrlEN = "$enUrl/galileo-testnet/participation-guide";
   static String t4WebWaitingAddress = "https://tally.so/r/3lV1xX";
+
   static String t4HomeHelpUrlCn =
       "https://help.titanapp.info/titan-network-zhong-wen/titan-fil/titanfil-agent-an-zhuang-jiao-cheng/windows-xi-tong/cliwindows-chang-jian-wen-ti";
   static String t4HomeHelpUrlEn =
       "https://help.titanapp.info/titan-network-en/titan-fil/titan-fil-agent-installation-guide/windows/faq-for-windows";
-  static String t4MajorHelpUrlCn =
-      "$cnPodoeUrl$urlAddress/4-ce-jia-li-le-ce-shi-wang/titan-agent-an-zhuang-jiao-cheng/windows-xi-tong/windows-ke-shi-hua-ke-hu-duan-jiao-cheng";
-  static String t4MajorHelpUrlEn =
-      "$enUrl/galileo-testnet/titan-agent-installation-guide/windows/intall-titan-agent-on-windows-pro";
+
   static String walletUrlEn =
       "$enUrl/galileo-testnet/how-to-bind-your-earning-wallet";
   static String walletUrlCn =
@@ -45,9 +42,7 @@ class AppConfig {
   static String usdcWalletUrlEn =
       "$enUrl/galileo-testnet/f.a.q./how-to-bind-your-usdc-wallet";
 
-  static String t3urlCn =
-      "$cnPodoeUrl$urlAddress/3-ce-ka-xi-ni-ce-shi-wang/guan-yu-ka-xi-ni-ce-shi-wang";
-  static String t3urlEn = "$enUrl/cassini-testnet/about-cassini-testnet";
+
   static String t4urlCn =
       "https://titannet.gitbook.io/titan-network-cn/titan-fil/titanfil-zi-yuan-can-yu-zhi-nan";
   static String t4urlEn = "https://titannet.gitbook.io/titan-network-cn/titan-network-en/titan-fil/titan-fil-agent-installation-guide";
@@ -65,22 +60,22 @@ class AppConfig {
       "https://pcdn.titannet.io/test4/bin/check_vm_names";
 
   static String downAgentDarwin =
-      "https://pcdn.titannet.io/test4/latest/agent-darwin.zip";
+      "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin.zip";
 
   static String downAgentDarwinArm64 =
-      "https://pcdn.titannet.io/test4/latest/agent-darwin-arm64.zip";
+      "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin-arm64.zip";
 
   static String downAgentWindows =
-      "https://pcdn.titannet.io/test4/latest/agent-windows.zip";
+      "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-windows.zip";
 
   static String downAgentDarwinMD5 =
-      "https://pcdn.titannet.io/test4/latest/agent-darwin.zip.md5";
+      "https://pcdn.titannet.io/filpcdn/bin/agent-darwin.zip.md5";
 
   static String downAgentDarwinArm64MD5 =
-      "https://pcdn.titannet.io/test4/latest/agent-darwin-arm64.zip.md5";
+      "https://pcdn.titannet.io/filpcdn/bin/agent-darwin-arm64.zip.md5";
 
   static String downAgentWindowsMD5 =
-      "https://pcdn.titannet.io/test4/latest/agent-windows.zip.md5";
+      "https://pcdn.titannet.io/filpcdn/bin/agent-windows.zip.md5";
 
   static String downPSTools =
       "https://download.sysinternals.com/files/PSTools.zip";
