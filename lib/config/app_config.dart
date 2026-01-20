@@ -64,18 +64,20 @@ class AppConfig {
 
   static String downAgentDarwinArm64 =
       "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin-arm64.zip";
-
+// 其他的也是
+//
+// https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-*.zip.md5 这种形式
   static String downAgentWindows =
       "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-windows.zip";
 
   static String downAgentDarwinMD5 =
-      "https://pcdn.titannet.io/filpcdn/bin/agent-darwin.zip.md5";
+      "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin.zip.md5";
 
   static String downAgentDarwinArm64MD5 =
-      "https://pcdn.titannet.io/filpcdn/bin/agent-darwin-arm64.zip.md5";
+      "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-darwin-arm64.zip.md5";
 
   static String downAgentWindowsMD5 =
-      "https://pcdn.titannet.io/filpcdn/bin/agent-windows.zip.md5";
+      "https://pcdn.titannet.io/filpcdn/bin/filagent/filagent-windows.zip.md5";
 
   static String downPSTools =
       "https://download.sysinternals.com/files/PSTools.zip";
