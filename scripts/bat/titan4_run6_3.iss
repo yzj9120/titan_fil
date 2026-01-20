@@ -11,7 +11,7 @@
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 #define BuildOutputDir SourcePath + "\..\..\build\windows\x64\runner\Release"
-#define LibsDir SourcePath + "\..\..\..\libs"
+#define LibsDir SourcePath + "\..\..\..\fillibs"
 #define OutputDir SourcePath + "\build"
 
 [Setup]
