@@ -67,7 +67,7 @@ Source: "{#LibsDir}\VC_redist.x64.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#LibsDir}\VirtualBox-7.1.6-167084-Win.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#LibsDir}\multipass-1.15.0+win-win64.msi"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#LibsDir}\check_vm_names.exe"; DestDir: "{code:GetAgentInstallDir}"; Flags: ignoreversion
-Source: "{#LibsDir}\agent.exe"; DestDir: "{code:GetAgentInstallDir}"; Flags: ignoreversion
+Source: "{#LibsDir}\filagent.exe"; DestDir: "{code:GetAgentInstallDir}"; Flags: ignoreversion
 
 Source: "{#LibsDir}\isrgrootx1.der"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#LibsDir}\lets-encrypt-r3.bat"; DestDir: "{app}"; Flags: ignoreversion
